@@ -7,6 +7,7 @@ function init() {
   initScrollEffects();
   initIntersectionObserverReveal();
   initContactForm();
+  initMobileMenu();
 }
 
 if (document.readyState === 'loading') {
@@ -160,7 +161,7 @@ function initBackgroundCanvas() {
  */
 function initScrollEffects() {
   const header = document.querySelector('header');
-  const navLinks = document.querySelectorAll('nav a');
+  const navLinks = document.querySelectorAll('.main-nav a');
   const sections = document.querySelectorAll('section');
 
   window.addEventListener('scroll', () => {
@@ -247,5 +248,48 @@ function initContactForm() {
 
     // Trigger the client mail program
     window.location.href = mailtoUrl;
+  });
+}
+
+/**
+ * Mobile Navigation Drawer Toggle & Dismissal logic
+ */
+function initMobileMenu() {
+  const toggleBtn = document.getElementById('nav-toggle');
+  const nav = document.getElementById('main-nav');
+  const backdrop = document.getElementById('nav-backdrop');
+  const navLinks = document.querySelectorAll('.main-nav a');
+
+  if (!toggleBtn || !nav || !backdrop) return;
+
+  function toggleMenu() {
+    const isOpen = nav.classList.toggle('open');
+    toggleBtn.classList.toggle('open');
+    backdrop.classList.toggle('open');
+    
+    // Accessibility: toggle aria expanded state
+    toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    
+    // Prevent background layout scroll when menu is active
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    nav.classList.remove('open');
+    toggleBtn.classList.remove('open');
+    backdrop.classList.remove('open');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  // Bind trigger click
+  toggleBtn.addEventListener('click', toggleMenu);
+
+  // Bind backdrop overlay click (light dismiss)
+  backdrop.addEventListener('click', closeMenu);
+
+  // Auto close menu when a navigation item is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
   });
 }

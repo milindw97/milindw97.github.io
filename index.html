@@ -29,17 +29,26 @@
   <!-- Header & Navigation -->
   <header>
     <div class="logo">Milind Wadhwa</div>
-    <nav>
-      <ul>
-        <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#projects">Highlights</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
+  
+  <nav class="main-nav" id="main-nav">
+    <ul>
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Highlights</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Overlay Backdrop for Mobile Navigation Drawer -->
+  <div class="nav-backdrop" id="nav-backdrop"></div>
 
   <!-- Main Container -->
   <main>
