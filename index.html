@@ -1,6 +1,494 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  
+  <title>Milind Wadhwa - Portfolio</title>
+  <meta name="description" content="SDE 3 (GenAI) at Bidgely specializing in highly scalable backend architecture, microservices, and Agentic AI platforms. Explore Milind Wadhwa's resume, skills, and projects.">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+
+  <!-- Background Canvas for Interactive Particle Node Grid -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Ambient Blurred Radial Blobs -->
+  <div class="blur-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header>
+    <div class="logo">Milind Wadhwa</div>
+    <nav>
+      <ul>
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Highlights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main>
+
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        SDE-3 (GenAI) at Bidgely
+      </div>
+      
+      <h1 class="hero-title">
+        <span>Hi, I'm</span>
+        Milind Wadhwa
+      </h1>
+      
+      <p class="hero-tagline">
+        SDE 3 (GenAI) at Bidgely, specializing in <strong class="gradient-text">highly scalable backend architecture</strong>, 
+        <strong class="gradient-text">microservices</strong>, and <strong class="gradient-text">Agentic AI</strong> development.
+      </p>
+
+      <!-- Key Metrics -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-val">7+ Yrs</div>
+          <div class="metric-label">Engineering Experience</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">85%</div>
+          <div class="metric-label">Agentic Resolution Accuracy</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-val">~70%</div>
+          <div class="metric-label">Service Efficiency Increase</div>
+        </div>
+      </div>
+
+      <!-- Hero Call To Actions -->
+      <div class="cta-group">
+        <a href="#contact" class="btn btn-primary">
+          Get in Touch
+        </a>
+        <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" class="btn btn-secondary">
+          LinkedIn Profile
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="scroll-reveal">
+      <h2>About Me</h2>
+      <div class="about-container">
+        <div class="about-text">
+          <p>
+            I am a senior backend and GenAI systems engineer focused on architecting low-latency, high-throughput software and building autonomous, multi-modal AI ecosystems. Currently, I design Conversational Energy Assistant Chat & Voice Agents at <strong><a href="https://www.bidgely.com" target="_blank" rel="noopener">Bidgely</a></strong>.
+          </p>
+          <p>
+            With over seven years of professional experience, I specialize in fine-tuning speech-to-text (STT) models, constructing optimized retrieval-augmented generation (RAG) pipelines, and migrating monolithic platforms to modern asynchronous microservices.
+          </p>
+          <p>
+            I excel in writing robust code in <strong>Python</strong>, <strong>Golang</strong>, and <strong>Java</strong>, deploying AWS cloud-native architectures, and leading collaborative engineering initiatives.
+          </p>
+        </div>
+        <div class="about-visual">
+          <div class="visual-box">
+            <span class="code-bracket left">{</span>
+            <div class="visual-inner">
+              <div class="avatar-mockup">MW</div>
+              <h3>Milind Wadhwa</h3>
+              <p>Gurgaon, Haryana, India (Remote)</p>
+            </div>
+            <span class="code-bracket right">}</span>
+          </div>
+          <div class="visual-glow"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="scroll-reveal">
+      <h2>Skills & Tooling</h2>
+      <div class="skills-grid">
+        <!-- Programming & Frameworks -->
+        <div class="skills-category">
+          <h3>Languages & Frameworks</h3>
+          <div class="skills-list">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">FastAPI</span>
+            <span class="skill-chip">Flask</span>
+            <span class="skill-chip">Django</span>
+            <span class="skill-chip">Golang</span>
+            <span class="skill-chip">Java</span>
+            <span class="skill-chip">Spring Boot</span>
+          </div>
+        </div>
+
+        <!-- AI & Machine Learning -->
+        <div class="skills-category">
+          <h3>AI & Machine Learning</h3>
+          <div class="skills-list">
+            <span class="skill-chip">LangChain</span>
+            <span class="skill-chip">Agno</span>
+            <span class="skill-chip">Pipecat</span>
+            <span class="skill-chip">SileroVAD</span>
+            <span class="skill-chip">Deepgram</span>
+            <span class="skill-chip">ElevenLabs</span>
+            <span class="skill-chip">Huggingface</span>
+            <span class="skill-chip">LoRA Fine-tuning</span>
+            <span class="skill-chip">Vector Databases</span>
+          </div>
+        </div>
+
+        <!-- Databases & Caching -->
+        <div class="skills-category">
+          <h3>Databases & Caching</h3>
+          <div class="skills-list">
+            <span class="skill-chip">PostgreSQL</span>
+            <span class="skill-chip">MySQL</span>
+            <span class="skill-chip">Clickhouse</span>
+            <span class="skill-chip">Redis</span>
+            <span class="skill-chip">Elasticsearch</span>
+          </div>
+        </div>
+
+        <!-- Cloud & DevOps -->
+        <div class="skills-category">
+          <h3>Cloud & DevOps</h3>
+          <div class="skills-list">
+            <span class="skill-chip">AWS</span>
+            <span class="skill-chip">Kubernetes</span>
+            <span class="skill-chip">Docker</span>
+            <span class="skill-chip">ECS</span>
+            <span class="skill-chip">EC2</span>
+            <span class="skill-chip">OpenShift</span>
+            <span class="skill-chip">Jenkins</span>
+            <span class="skill-chip">CloudWatch</span>
+          </div>
+        </div>
+
+        <!-- Streaming & Messaging -->
+        <div class="skills-category">
+          <h3>Streaming & Messaging</h3>
+          <div class="skills-list">
+            <span class="skill-chip">Apache Kafka</span>
+            <span class="skill-chip">Amazon SQS</span>
+            <span class="skill-chip">Pubnub</span>
+          </div>
+        </div>
+
+        <!-- Monitoring & Testing -->
+        <div class="skills-category">
+          <h3>Observability & QA</h3>
+          <div class="skills-list">
+            <span class="skill-chip">Splunk</span>
+            <span class="skill-chip">Elastic APM</span>
+            <span class="skill-chip">Dynatrace</span>
+            <span class="skill-chip">ELK Stack</span>
+            <span class="skill-chip">Rest-Assured</span>
+            <span class="skill-chip">Cucumber BDD</span>
+            <span class="skill-chip">TestNG</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="scroll-reveal">
+      <h2>Professional Experience</h2>
+      <div class="timeline-wrapper">
+
+        <!-- SDE-3 Bidgely -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="job-title">Software Development Engineer - 3 (GenAI) <span>@ <a href="https://www.bidgely.com" target="_blank" rel="noopener">Bidgely</a></span></div>
+            <div class="job-date">06/2026 - Present</div>
+          </div>
+          <div class="company-location">Gurgaon, Haryana, India (Remote)</div>
+          <div class="timeline-content">
+            <details open>
+              <summary>
+                <span class="summary-text">Conversational Energy Assistant Chat & Voice Agents</span>
+                <svg class="details-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <ul class="bullets-list">
+                <li>Architecting advanced conversational chat and voice agents to analyze home utility bills, provide detailed energy insights, and suggest optimal billing rate plans.</li>
+                <li>Developing LLM-driven agentic pipelines to provide actionable recommendations for lowering electricity bills and optimizing overall home energy usage.</li>
+                <li>Integrating voice and messaging frameworks to deliver low-latency, natural dialog systems for utility consumer engagement.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <!-- SDE-2 Plivo -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="job-title">Software Development Engineer - 2 <span>@ <a href="https://www.plivo.com" target="_blank" rel="noopener">Plivo Communications</a></span></div>
+            <div class="job-date">01/2024 - 05/2026</div>
+          </div>
+          <div class="company-location">Bangalore, Karnataka (On-site)</div>
+          <div class="timeline-content">
+            <details open>
+              <summary>
+                <span class="summary-text">Engineering Voice AI Agents & Multimodal Workflows</span>
+                <svg class="details-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <ul class="bullets-list">
+                <li>Engineered low-latency Voice AI Agents utilizing specialized tools like Pipecat, SileroVAD, Deepgram, and ElevenLabs for advanced conversational voice interactions.</li>
+                <li>Spearheaded model optimization initiatives, utilizing LoRA fine-tuning techniques for STT (Speech-to-Text) models to significantly reduce transcription latency and improve accuracy for the Voice AI platform.</li>
+                <li>Led the technical integration of multi-modal LLMs and Vector Databases, optimizing RAG (Retrieval-Augmented Generation) pipelines for superior knowledge retrieval across WhatsApp, Webchat, and SMS channels.</li>
+                <li>Architected and deployed a production-ready Agentic AI ecosystem, leveraging LangChain and Agno to automate end-to-end customer support workflows with a 75% resolution accuracy.</li>
+                <li>Actively mentored junior developers and conducted thorough PR reviews, ensuring adherence to high code quality and boosting overall team productivity.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <!-- SDE-1 Plivo -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="job-title">Software Development Engineer - 1 <span>@ <a href="https://www.plivo.com" target="_blank" rel="noopener">Plivo Communications</a></span></div>
+            <div class="job-date">12/2021 - 12/2023</div>
+          </div>
+          <div class="company-location">Bangalore, Karnataka</div>
+          <div class="timeline-content">
+            <details open>
+              <summary>
+                <span class="summary-text">SaaS Platform Refactoring & Cloud Scalability</span>
+                <svg class="details-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <ul class="bullets-list">
+                <li>Revitalized SaaS platform performance by migrating synchronous services to asynchronous FastAPI and implementing task parallelism via Amazon SQS, increasing efficiency by ~70%.</li>
+                <li>Developed core SaaS platform APIs utilizing both Flask & Golang for sales engagement applications.</li>
+                <li>Managed cloud infrastructure by automating ECS deployments and configuring EC2 auto-scaling via CloudWatch to ensure 99.9% system availability.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <!-- ASE-2 Optum -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="job-title">Associate Software Engineer 2 <span>@ <a href="https://www.optum.com" target="_blank" rel="noopener">Optum (UnitedHealth Group)</a></span></div>
+            <div class="job-date">07/2019 - 12/2021</div>
+          </div>
+          <div class="company-location">Hyderabad, Telangana</div>
+          <div class="timeline-content">
+            <details open>
+              <summary>
+                <span class="summary-text">Microservices & DevOps Automation</span>
+                <svg class="details-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <ul class="bullets-list">
+                <li>Built RESTful microservices using Spring Boot and Apache Kafka for real-time, event-driven data streaming.</li>
+                <li>Streamlined DevOps by automating CI/CD pipelines & containerized deployments on OpenShift using Docker & Jenkins.</li>
+                <li>Reduced test execution time by 40% through multi-threaded integration testing using Rest-Assured and Cucumber.</li>
+                <li>Implemented full-stack monitoring using Splunk, Elastic APM, and Dynatrace to improve system observability.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <!-- Intern Optum -->
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div class="job-title">Software Engineering Intern <span>@ <a href="https://www.optum.com" target="_blank" rel="noopener">Optum (UnitedHealth Group)</a></span></div>
+            <div class="job-date">05/2018 - 07/2018</div>
+          </div>
+          <div class="company-location">Gurgaon, Haryana</div>
+          <div class="timeline-content">
+            <details open>
+              <summary>
+                <span class="summary-text">Observability & Anomaly Detection</span>
+                <svg class="details-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+              </summary>
+              <ul class="bullets-list">
+                <li>Deployed an ELK Stack solution for real-time anomaly detection, successfully monitoring over 100K email transactions for irregularities.</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project/Achievements Section -->
+    <section id="projects" class="scroll-reveal">
+      <h2>Technical Highlights</h2>
+      <div class="projects-grid">
+        
+        <!-- Highlight 1 -->
+        <div class="project-card">
+          <div class="project-visual">
+            <span class="project-icon">💡</span>
+            <div class="project-visual-blur p-blur-1"></div>
+            <div class="project-visual-blur p-blur-2"></div>
+          </div>
+          <div class="project-info">
+            <h3>GenAI Energy Assistant</h3>
+            <p class="project-desc">Architecting conversational chat and voice agents to analyze home utility bills, provide detailed consumption insights, and recommend optimal rate plans.</p>
+            <div class="project-tech">
+              <span class="tech-tag">LLMs</span>
+              <span class="tech-tag">Voice AI</span>
+              <span class="tech-tag">Agentic AI</span>
+              <span class="tech-tag">Data Analytics</span>
+            </div>
+            <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" class="project-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Highlight 2 -->
+        <div class="project-card">
+          <div class="project-visual">
+            <span class="project-icon">🤖</span>
+            <div class="project-visual-blur p-blur-1"></div>
+            <div class="project-visual-blur p-blur-2"></div>
+          </div>
+          <div class="project-info">
+            <h3>Autonomous Agent Ecosystem</h3>
+            <p class="project-desc">Deployed production RAG pipelines and workflow orchestration graphs using LangChain and Agno to automate support tickets with a 75% success rate.</p>
+            <div class="project-tech">
+              <span class="tech-tag">LangChain</span>
+              <span class="tech-tag">Agno</span>
+              <span class="tech-tag">VectorDB</span>
+              <span class="tech-tag">LLMs</span>
+              <span class="tech-tag">RAG</span>
+            </div>
+            <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" class="project-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Highlight 3 -->
+        <div class="project-card">
+          <div class="project-visual">
+            <span class="project-icon">⚡</span>
+            <div class="project-visual-blur p-blur-1"></div>
+            <div class="project-visual-blur p-blur-2"></div>
+          </div>
+          <div class="project-info">
+            <h3>STT Model Optimization</h3>
+            <p class="project-desc">Applied parameter-efficient fine-tuning (PEFT) using LoRA techniques on open-weights Speech-to-Text architectures, dramatically decreasing audio transcription latency.</p>
+            <div class="project-tech">
+              <span class="tech-tag">Huggingface</span>
+              <span class="tech-tag">LoRA</span>
+              <span class="tech-tag">STT</span>
+              <span class="tech-tag">PyTorch</span>
+            </div>
+            <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" class="project-link">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Highlight 4 -->
+        <div class="project-card">
+          <div class="project-visual">
+            <span class="project-icon">🔄</span>
+            <div class="project-visual-blur p-blur-1"></div>
+            <div class="project-visual-blur p-blur-2"></div>
+          </div>
+          <div class="project-info">
+            <h3>Async SaaS Core Refactor</h3>
+            <p class="project-desc">Accelerated SaaS platform response time by 70% by transitioning synchronous code to asynchronous FastAPI and queuing background tasks via Amazon SQS parallel workers.</p>
+            <div class="project-tech">
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">Golang</span>
+              <span class="tech-tag">Amazon SQS</span>
+              <span class="tech-tag">AWS ECS</span>
+            </div>
+            <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" class="project-link">Learn More</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="scroll-reveal">
+      <h2>Get In Touch</h2>
+      <div class="contact-container">
+        
+        <!-- Info Panel -->
+        <div class="contact-info-panel">
+          <h3>Let's collaborate</h3>
+          <p>Whether you're looking to discuss scalable backend architectures, event streaming with Kafka, or cutting-edge Agentic AI platforms, feel free to reach out.</p>
+          
+          <div class="contact-methods">
+            <a href="mailto:milindw.97@gmail.com" class="contact-item">
+              <div class="contact-icon">✉️</div>
+              <div class="contact-label">
+                <span>Email</span>
+                <span>milindw.97@gmail.com</span>
+              </div>
+            </a>
+            
+            <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" class="contact-item">
+              <div class="contact-icon">💼</div>
+              <div class="contact-label">
+                <span>LinkedIn</span>
+                <span>linkedin.com/in/milind-97-wadhwa</span>
+              </div>
+            </a>
+            
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-label">
+                <span>Location</span>
+                <span>Gurgaon, Haryana, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Panel -->
+        <div class="contact-form-panel">
+          <!-- Connects to email handler directly -->
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name-input">Your Name</label>
+              <input type="text" name="name" id="name-input" class="form-control" placeholder="e.g. Jane Doe" required>
+            </div>
+
+            <div class="form-group">
+              <label for="subject-input">Subject</label>
+              <input type="text" name="subject" id="subject-input" class="form-control" placeholder="e.g. General Inquiry / Collaboration Opportunity" required>
+            </div>
+            <div class="form-group">
+              <label for="message-input">Message</label>
+              <textarea name="body" id="message-input" class="form-control" placeholder="Describe your project or message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem;">
+              Send Message via Email
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Milind Wadhwa. All rights reserved.</p>
+    <div class="social-tray">
+      <a href="https://github.com/milindw97" target="_blank" rel="noopener" title="GitHub">🐙 GitHub</a>
+      <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener" title="LinkedIn">💼 LinkedIn</a>
+      <a href="mailto:milindw.97@gmail.com" title="Email">✉️ Email</a>
+    </div>
+  </footer>
+
+  <!-- Core Logic Script -->
+  <script src="app.js"></script>
 </body>
 </html>
