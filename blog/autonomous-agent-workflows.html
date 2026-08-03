@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Building Resilient Autonomous Agent Workflows — Milind Wadhwa</title>
+  <meta name="description"
+    content="Designing multi-agent workflows with deterministic tool fallbacks, state machine checkpoints, and LangChain & Agno.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="blog-article-page">
+
+  <!-- Floating Island Dock Header -->
+  <header class="navbar-wrapper">
+    <nav class="floating-dock blog-mode" id="floating-dock">
+      <!-- Mode Switcher Segmented Control -->
+      <div class="dock-mode-switcher" id="dock-mode-switcher">
+        <span class="mode-glider" aria-hidden="true"></span>
+        <a href="../index.html#blog" class="mode-pill active" id="mode-btn-blog" aria-label="Blog view">
+          <span class="mode-icon">✍️</span>
+          <span class="mode-text">Blog</span>
+        </a>
+        <a href="../index.html" class="mode-pill" id="mode-btn-portfolio" aria-label="Switch to Portfolio view">
+          <span class="mode-icon">💼</span>
+          <span class="mode-text">Portfolio</span>
+        </a>
+      </div>
+
+      <div class="dock-actions">
+        <a href="../resume.pdf" target="_blank" rel="noopener" class="dock-resume-btn" title="View Resume PDF">
+          <span>📄</span>
+          <span>Resume</span>
+        </a>
+        <a href="../index.html#contact" class="dock-cta-btn">
+          <span class="wave-hand">👋</span>
+          <span>Say Hi</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="article-container">
+    <div class="article-breadcrumb">
+      <a href="../index.html#blog" class="back-link">← Back to all articles</a>
+    </div>
+
+    <header class="article-header">
+      <div class="article-meta-top">
+        <span class="article-tag">Agents</span>
+        <span class="article-tag">LangChain</span>
+        <span class="article-tag">Agno</span>
+        <span class="article-read-time">⏱️ 7 min read</span>
+      </div>
+      <h1 class="article-title">Building Resilient Autonomous Agent Workflows with LangChain & Agno</h1>
+      <p class="article-subtitle">
+        Architecting production-ready AI agents capable of 85%+ resolution rates through structured state persistence,
+        guardrails, and deterministic tool execution.
+      </p>
+      <div class="article-author-card">
+        <img src="../images/milind.jpg" alt="Milind Wadhwa" class="author-avatar">
+        <div>
+          <div class="author-name">Milind Wadhwa</div>
+          <div class="author-role">Software Engineer • Published 17th June 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <article class="article-body">
+      <p>
+        Autonomous agents powered by Large Language Models have moved from novelty demos to mission-critical enterprise
+        systems. However, moving an agent from a Jupyter notebook to a system handling thousands of customer
+        interactions requires solving <strong>looping, hallucinations, and unhandled tool exceptions</strong>.
+      </p>
+
+      <h2>The 3 Pillars of Production Agent Resilience</h2>
+      <p>
+        Through our agent deployment architecture, we implemented three core design principles:
+      </p>
+      <ol>
+        <li><strong>Deterministic State Machines over Unbounded Loops</strong>: Guarding agent reasoning with structured
+          checkpoints and step bounds.</li>
+        <li><strong>Atomic Tool Interfaces with Pydantic Schema Validation</strong>: Enforcing strict typed inputs and
+          outputs for every tool invocation.</li>
+        <li><strong>Confidence-Gated Human Handoffs</strong>: Automatically escalating to human agents when confidence
+          falls below calibrated thresholds.</li>
+      </ol>
+
+      <div class="callout-card">
+        <span class="callout-icon">🛡️</span>
+        <div>
+          <strong>Production Rule:</strong> Never let an LLM execute destructive database actions directly without a
+          two-phase confirmation or tokenized preview step.
+        </div>
+      </div>
+
+      <h2>Multi-Agent Orchestration with Agno & LangChain</h2>
+      <pre class="code-block"><code>from agno.agent import Agent
+from agno.models.openai import OpenAIChat
+from agno.tools.duckduckgo import DuckDuckGoTools
+from agno.storage.agent.postgres import PostgresAgentStorage
+
+storage = PostgresAgentStorage(
+    table_name="agent_sessions",
+    db_url="postgresql+psycopg2://user:pass@db:5432/ai_agents"
+)
+
+support_agent = Agent(
+    name="Customer Support Specialist",
+    model=OpenAIChat(id="gpt-4o"),
+    tools=[DuckDuckGoTools(), custom_order_lookup_tool],
+    storage=storage,
+    add_history_to_messages=True,
+    num_history_responses=5,
+    description="You resolve customer inquiries with high precision.",
+    instructions=[
+        "Always verify order ID format before invoking lookup.",
+        "If inquiry involves billing disputes > $100, generate a supervisor handoff ticket."
+    ],
+    markdown=True
+)
+
+response = support_agent.print_response("Where is my order #PLV-88231?")</code></pre>
+
+      <h2>Results & Production Impact</h2>
+      <ul>
+        <li><strong>Autonomous Resolution Rate</strong>: Reached <strong>85%</strong> across customer support queries.
+        </li>
+        <li><strong>Zero Uncontrolled Loops</strong>: Hard timeout and retry-budget mechanics prevented orphaned API
+          token burn.</li>
+        <li><strong>Sub-800ms Average Turnaround</strong>: Pre-warmed connection pools and cached vector embeddings
+          enabled lightning-fast lookups.</li>
+      </ul>
+    </article>
+
+    <div class="article-footer-nav">
+      <a href="../index.html#blog" class="btn btn-secondary">← Back to All Articles</a>
+      <a href="../index.html#contact" class="btn">Say Hi 💬</a>
+    </div>
+  </main>
+
+  <div class="footer-wave-container" aria-hidden="true">
+    <svg class="footer-wave" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none">
+      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#66BFBF" />
+    </svg>
+  </div>
+
+  <footer class="bottom-container">
+    <div class="footer-inner">
+      <div class="footer-status-card">
+        <span class="live-dot-pulse"></span>
+        <span class="status-location">📍 Gurgaon, India</span>
+        <span class="status-divider">•</span>
+        <span class="status-time" id="live-local-time">08:50 PM IST</span>
+      </div>
+
+      <div class="footer-links-dock">
+        <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener"><span
+            class="pill-icon">🐙</span><span>GitHub</span></a>
+        <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener"><span
+            class="pill-icon">💼</span><span>LinkedIn</span></a>
+        <a class="footer-pill" href="../resume.pdf" target="_blank" rel="noopener"><span
+            class="pill-icon">📄</span><span>Resume</span></a>
+        <a class="footer-pill" href="mailto:milindw.97@gmail.com"><span
+            class="pill-icon">✉️</span><span>Email</span></a>
+      </div>
+
+      <p class="copyright-text">© 2026 Milind Wadhwa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+
+</html>

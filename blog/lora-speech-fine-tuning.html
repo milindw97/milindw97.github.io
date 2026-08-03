@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoRA vs Full Fine-Tuning for Domain Speech Models — Milind Wadhwa</title>
+  <meta name="description"
+    content="Practical lessons, loss curves, and benchmarks fine-tuning Whisper and Conformer STT models on enterprise speech.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="blog-article-page">
+
+  <!-- Floating Island Dock Header -->
+  <header class="navbar-wrapper">
+    <nav class="floating-dock blog-mode" id="floating-dock">
+      <!-- Mode Switcher Segmented Control -->
+      <div class="dock-mode-switcher" id="dock-mode-switcher">
+        <span class="mode-glider" aria-hidden="true"></span>
+        <a href="../index.html#blog" class="mode-pill active" id="mode-btn-blog" aria-label="Blog view">
+          <span class="mode-icon">✍️</span>
+          <span class="mode-text">Blog</span>
+        </a>
+        <a href="../index.html" class="mode-pill" id="mode-btn-portfolio" aria-label="Switch to Portfolio view">
+          <span class="mode-icon">💼</span>
+          <span class="mode-text">Portfolio</span>
+        </a>
+      </div>
+
+      <div class="dock-actions">
+        <a href="../resume.pdf" target="_blank" rel="noopener" class="dock-resume-btn" title="View Resume PDF">
+          <span>📄</span>
+          <span>Resume</span>
+        </a>
+        <a href="../index.html#contact" class="dock-cta-btn">
+          <span class="wave-hand">👋</span>
+          <span>Say Hi</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="article-container">
+    <div class="article-breadcrumb">
+      <a href="../index.html#blog" class="back-link">← Back to all articles</a>
+    </div>
+
+    <header class="article-header">
+      <div class="article-meta-top">
+        <span class="article-tag">GenAI</span>
+        <span class="article-tag">LoRA</span>
+        <span class="article-tag">PyTorch</span>
+        <span class="article-read-time">⏱️ 8 min read</span>
+      </div>
+      <h1 class="article-title">LoRA vs Full Fine-Tuning for Domain-Specific Speech Models</h1>
+      <p class="article-subtitle">
+        How parameter-efficient fine-tuning (PEFT) cuts training VRAM by 75% while achieving 96%+ accuracy on
+        specialized industry terminology.
+      </p>
+      <div class="article-author-card">
+        <img src="../images/milind.jpg" alt="Milind Wadhwa" class="author-avatar">
+        <div>
+          <div class="author-name">Milind Wadhwa</div>
+          <div class="author-role">Software Engineer • Published 20th July 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <article class="article-body">
+      <p>
+        Off-the-shelf Speech-to-Text (STT) models like OpenAI Whisper or Conformer perform exceptionally well on generic
+        English datasets. However, when deployed in specialized domains — such as <strong>healthcare jargon, energy
+          tariffs, or telecom telephony terminology</strong> — the Word Error Rate (WER) can spike from 4% to over 22%.
+      </p>
+
+      <h2>The Challenge with Full Fine-Tuning</h2>
+      <p>
+        Full parameter fine-tuning on massive transformer architectures brings three primary hurdles:
+      </p>
+      <ul>
+        <li><strong>VRAM Exhaustion</strong>: Requires storing gradients and optimizer states for all parameters (1.5B+
+          weights), demanding multi-A100 clusters.</li>
+        <li><strong>Catastrophic Forgetting</strong>: The model becomes hyper-specialized and degrades on everyday
+          conversational English.</li>
+        <li><strong>Adapter Deployment Overhead</strong>: Serving separate multi-gigabyte model weights per tenant or
+          domain is economically infeasible.</li>
+      </ul>
+
+      <h2>The Low-Rank Adaptation (LoRA) Approach</h2>
+      <p>
+        Instead of modifying the dense weight matrices \(W_0 \in \mathbb{R}^{d \times k}\), LoRA freezes \(W_0\) and
+        injects trainable rank-decomposition matrices:
+      </p>
+      <div class="callout-card">
+        <span class="callout-icon">📐</span>
+        <div>
+          <strong>Mathematical Formulation:</strong>
+          <code>W = W₀ + ΔW = W₀ + B · A</code> where \(B \in \mathbb{R}^{d \times r}\), \(A \in \mathbb{R}^{r \times
+          k}\), and the rank \(r \ll \min(d, k)\).
+        </div>
+      </div>
+
+      <pre class="code-block"><code>from peft import LoraConfig, get_peft_model
+from transformers import WhisperForConditionalGeneration
+
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-large-v3")
+
+peft_config = LoraConfig(
+    r=32,
+    lora_alpha=64,
+    target_modules=["q_proj", "v_proj"],
+    lora_dropout=0.05,
+    bias="none"
+)
+
+peft_model = get_peft_model(model, peft_config)
+peft_model.print_trainable_parameters()
+# Trainable params: 15,728,640 || All params: 1,543,304,960 || Trainable%: 1.019%</code></pre>
+
+      <h2>Benchmark Results on Telecom Speech Data</h2>
+      <p>
+        Training with a rank \(r=32\) on only <strong>1.02% of total parameters</strong> yielded remarkable
+        improvements:
+      </p>
+      <ul>
+        <li><strong>Domain Word Error Rate (WER)</strong>: Dropped from <strong>18.4% → 3.8%</strong>.</li>
+        <li><strong>GPU Training Memory</strong>: Decreased from <strong>78GB VRAM → 18GB VRAM</strong> (enabling fast
+          runs on single consumer-tier GPUs).</li>
+        <li><strong>Adapter Checkpoint Size</strong>: Only <strong>62 MB</strong>, allowing dynamic swapping in memory
+          at runtime based on caller context.</li>
+      </ul>
+    </article>
+
+    <div class="article-footer-nav">
+      <a href="../index.html#blog" class="btn btn-secondary">← Back to All Articles</a>
+      <a href="../index.html#contact" class="btn">Connect with Me 💬</a>
+    </div>
+  </main>
+
+  <div class="footer-wave-container" aria-hidden="true">
+    <svg class="footer-wave" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none">
+      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#66BFBF" />
+    </svg>
+  </div>
+
+  <footer class="bottom-container">
+    <div class="footer-inner">
+      <div class="footer-status-card">
+        <span class="live-dot-pulse"></span>
+        <span class="status-location">📍 Gurgaon, India</span>
+        <span class="status-divider">•</span>
+        <span class="status-time" id="live-local-time">08:50 PM IST</span>
+      </div>
+
+      <div class="footer-links-dock">
+        <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener"><span
+            class="pill-icon">🐙</span><span>GitHub</span></a>
+        <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener"><span
+            class="pill-icon">💼</span><span>LinkedIn</span></a>
+        <a class="footer-pill" href="../resume.pdf" target="_blank" rel="noopener"><span
+            class="pill-icon">📄</span><span>Resume</span></a>
+        <a class="footer-pill" href="mailto:milindw.97@gmail.com"><span
+            class="pill-icon">✉️</span><span>Email</span></a>
+      </div>
+
+      <p class="copyright-text">© 2026 Milind Wadhwa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+
+</html>

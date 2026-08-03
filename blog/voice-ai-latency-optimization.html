@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecting Ultra-Low Latency Voice AI Agents — Milind Wadhwa</title>
+  <meta name="description"
+    content="A deep dive into sub-500ms voice-to-voice pipelines using Pipecat, SileroVAD, Deepgram, and ElevenLabs.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎙️</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="blog-article-page">
+
+  <!-- Floating Island Dock Header -->
+  <header class="navbar-wrapper">
+    <nav class="floating-dock blog-mode" id="floating-dock">
+      <!-- Mode Switcher Segmented Control -->
+      <div class="dock-mode-switcher" id="dock-mode-switcher">
+        <span class="mode-glider" aria-hidden="true"></span>
+        <a href="../index.html#blog" class="mode-pill active" id="mode-btn-blog" aria-label="Blog view">
+          <span class="mode-icon">✍️</span>
+          <span class="mode-text">Blog</span>
+        </a>
+        <a href="../index.html" class="mode-pill" id="mode-btn-portfolio" aria-label="Switch to Portfolio view">
+          <span class="mode-icon">💼</span>
+          <span class="mode-text">Portfolio</span>
+        </a>
+      </div>
+
+      <div class="dock-actions">
+        <a href="../resume.pdf" target="_blank" rel="noopener" class="dock-resume-btn" title="View Resume PDF">
+          <span>📄</span>
+          <span>Resume</span>
+        </a>
+        <a href="../index.html#contact" class="dock-cta-btn">
+          <span class="wave-hand">👋</span>
+          <span>Say Hi</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="article-container">
+    <!-- Breadcrumb & Back -->
+    <div class="article-breadcrumb">
+      <a href="../index.html#blog" class="back-link">← Back to all articles</a>
+    </div>
+
+    <!-- Article Header -->
+    <header class="article-header">
+      <div class="article-meta-top">
+        <span class="article-tag">Voice AI</span>
+        <span class="article-tag">Pipecat</span>
+        <span class="article-tag">System Design</span>
+        <span class="article-read-time">⏱️ 6 min read</span>
+      </div>
+      <h1 class="article-title">Architecting Ultra-Low Latency Voice AI Agents with Pipecat & SileroVAD</h1>
+      <p class="article-subtitle">
+        How we reduced end-to-end voice turnaround time from 1.8s down to sub-500ms for natural, human-like phone
+        conversations.
+      </p>
+      <div class="article-author-card">
+        <img src="../images/milind.jpg" alt="Milind Wadhwa" class="author-avatar">
+        <div>
+          <div class="author-name">Milind Wadhwa</div>
+          <div class="author-role">Software Engineer • Published 3rd August 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Content -->
+    <article class="article-body">
+      <p>
+        Building conversational voice AI that feels truly human is fundamentally a <strong>latency and turn-taking
+          problem</strong>. In normal human conversation, the average response gap between two speakers is only
+        <strong>200ms to 400ms</strong>. If your voice pipeline takes 1.5+ seconds to respond, the conversation feels
+        robotic, awkward, and disorienting.
+      </p>
+
+      <h2>The Anatomy of Voice Turnaround Latency</h2>
+      <p>
+        A standard voice agent pipeline consists of four sequential hops:
+      </p>
+      <ol>
+        <li><strong>Voice Activity Detection (VAD)</strong>: Detecting when the user stops speaking.</li>
+        <li><strong>Speech-to-Text (STT)</strong>: Transcribing raw audio chunks into text tokens.</li>
+        <li><strong>LLM Inference</strong>: Generating the response text stream.</li>
+        <li><strong>Text-to-Speech (TTS)</strong>: Synthesizing output audio chunks and streaming them over
+          WebSockets/SIP.</li>
+      </ol>
+
+      <div class="callout-card">
+        <span class="callout-icon">💡</span>
+        <div>
+          <strong>Key Insight:</strong> If each step operates in batch mode sequentially, your latency is cumulative:
+          <code>Total = VAD (400ms) + STT (350ms) + LLM (600ms) + TTS (450ms) = 1,800ms</code>.
+          To reach sub-500ms, the entire pipeline must operate in a <strong>pipelined streaming fashion</strong>.
+        </div>
+      </div>
+
+      <h2>1. Tightening Turn Detection with SileroVAD</h2>
+      <p>
+        Traditional VAD approaches wait for 500ms to 800ms of consecutive silence before deciding the user is done.
+        Using <strong>SileroVAD v5</strong> with dynamic speech thresholding and end-of-thought semantic classification,
+        we decreased silence thresholding to <strong>220ms</strong> while avoiding accidental mid-sentence cuts.
+      </p>
+
+      <h2>2. Streaming Sentence Chunking for LLM + TTS</h2>
+      <p>
+        Instead of waiting for the full LLM response to complete before invoking the TTS engine, we chunk the streaming
+        LLM tokens at natural sentence boundaries (<code>.</code>, <code>?</code>, <code>!</code>, <code>;</code>) and
+        immediately flush the first clause to <strong>ElevenLabs / Deepgram TTS</strong>.
+      </p>
+
+      <pre class="code-block"><code># Pipecat pipeline configuration snippet
+from pipecat.pipeline.pipeline import Pipeline
+from pipecat.services.deepgram import DeepgramSTTService
+from pipecat.services.elevenlabs import ElevenLabsTTSService
+from pipecat.vad.silero import SileroVAD
+
+vad = SileroVAD(
+    min_speech_duration_ms=100,
+    min_silence_duration_ms=220,
+    speech_pad_ms=30
+)
+
+stt = DeepgramSTTService(
+    api_key=DEEPGRAM_KEY,
+    model="nova-2-general",
+    interim_results=True
+)
+
+tts = ElevenLabsTTSService(
+    api_key=ELEVEN_KEY,
+    voice_id="21m00Tcm4TlvDq8ikWAM",
+    latency_optimization=4  # Ultra-low latency streaming mode
+)
+
+pipeline = Pipeline([
+    audio_input,
+    vad,
+    stt,
+    llm_processor,
+    sentence_aggregator,
+    tts,
+    audio_output
+])</code></pre>
+
+      <h2>3. Handling Live User Interruptions (Barge-In)</h2>
+      <p>
+        True conversational flow requires instantaneous interruption handling. The moment the user speaks while the
+        agent is talking:
+      </p>
+      <ul>
+        <li>VAD fires an immediate <code>UserStartedSpeaking</code> event.</li>
+        <li>The audio output buffer is instantly flushed.</li>
+        <li>The ongoing LLM token generation stream is cancelled.</li>
+        <li>A new context state is recorded with the interrupted turn.</li>
+      </ul>
+
+      <h2>Key Takeaways & Benchmarks</h2>
+      <p>
+        By moving from sequential batching to asynchronous pipelining with <strong>Pipecat</strong>,
+        <strong>SileroVAD</strong>, and WebSocket audio frames:
+      </p>
+      <ul>
+        <li><strong>Time-to-First-Audio (TTFA)</strong> reduced from <strong>1.8s to 430ms</strong>.</li>
+        <li><strong>Interruption response latency</strong> dropped to <strong>&lt;120ms</strong>.</li>
+        <li><strong>Customer engagement duration</strong> increased by 38% due to natural conversational tempo.</li>
+      </ul>
+    </article>
+
+    <!-- Bottom Article Navigation & Share -->
+    <div class="article-footer-nav">
+      <a href="../index.html#blog" class="btn btn-secondary">← Back to All Articles</a>
+      <a href="../index.html#contact" class="btn">Let's Discuss AI 💬</a>
+    </div>
+  </main>
+
+  <!-- WAVE HORIZON TRANSITION -->
+  <div class="footer-wave-container" aria-hidden="true">
+    <svg class="footer-wave" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none">
+      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#66BFBF" />
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bottom-container">
+    <div class="footer-inner">
+      <div class="footer-status-card">
+        <span class="live-dot-pulse"></span>
+        <span class="status-location">📍 Gurgaon, India</span>
+        <span class="status-divider">•</span>
+        <span class="status-time" id="live-local-time">08:50 PM IST</span>
+      </div>
+
+      <div class="footer-links-dock">
+        <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener"><span
+            class="pill-icon">🐙</span><span>GitHub</span></a>
+        <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener"><span
+            class="pill-icon">💼</span><span>LinkedIn</span></a>
+        <a class="footer-pill" href="../resume.pdf" target="_blank" rel="noopener"><span
+            class="pill-icon">📄</span><span>Resume</span></a>
+        <a class="footer-pill" href="mailto:milindw.97@gmail.com"><span
+            class="pill-icon">✉️</span><span>Email</span></a>
+      </div>
+
+      <p class="copyright-text">© 2026 Milind Wadhwa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Blog & Insights — Milind Wadhwa</title>
+  <meta name="description"
+    content="Articles and deep dives on GenAI, Voice AI agents, model fine-tuning, and scalable distributed systems by Milind Wadhwa.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✍️</text></svg>">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="blog-archive-page">
+
+  <!-- Floating Island Dock Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="floating-dock blog-mode" id="floating-dock">
+      <!-- Mode Switcher Segmented Control -->
+      <div class="dock-mode-switcher" id="dock-mode-switcher">
+        <span class="mode-glider" aria-hidden="true"></span>
+        <a href="index.html" class="mode-pill active" id="mode-btn-blog" aria-label="Blog view">
+          <span class="mode-icon">✍️</span>
+          <span class="mode-text">Blog</span>
+        </a>
+        <a href="../index.html" class="mode-pill" id="mode-btn-portfolio" aria-label="Switch to Portfolio view">
+          <span class="mode-icon">💼</span>
+          <span class="mode-text">Portfolio</span>
+        </a>
+      </div>
+
+      <div class="dock-actions">
+        <a href="../resume.pdf" target="_blank" rel="noopener" class="dock-resume-btn" title="View Resume PDF">
+          <span>📄</span>
+          <span>Resume</span>
+        </a>
+        <a href="../index.html#contact" class="dock-cta-btn">
+          <span class="wave-hand">👋</span>
+          <span>Say Hi</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Header for Blog -->
+  <header class="top-container blog-hero-header">
+    <div class="hero-content">
+      <span class="eyebrow-badge">
+        <span class="emoji-bounce">✍️</span>
+        <span>Writings & Architecture</span>
+      </span>
+      <h1 class="hero-title">Engineering Deep Dives</h1>
+      <p class="hero-subtitle">
+        Thoughts on GenAI, low-latency Voice AI Agents, LLM fine-tuning, and distributed backend platforms.
+      </p>
+    </div>
+  </header>
+
+  <!-- Main Blog Content Area -->
+  <main class="middle-container" style="max-width: 1080px;">
+
+    <!-- Filter & Search Controls -->
+    <div class="blog-controls-container">
+      <div class="blog-tag-filters" id="blog-tag-filters">
+        <button class="tag-filter-btn active" data-tag="all">All Topics</button>
+        <button class="tag-filter-btn" data-tag="Voice AI">Voice AI</button>
+        <button class="tag-filter-btn" data-tag="GenAI">GenAI</button>
+        <button class="tag-filter-btn" data-tag="Agents">Agents</button>
+        <button class="tag-filter-btn" data-tag="System Design">System Design</button>
+      </div>
+
+      <div class="blog-search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="blog-search-input" placeholder="Search articles by title or keyword..."
+          aria-label="Search blog posts">
+      </div>
+    </div>
+
+    <!-- Blog Articles Grid -->
+    <div class="blog-archive-grid" id="blog-articles-grid">
+
+      <!-- Post 1 -->
+      <article class="blog-card" data-tags="Voice AI,Pipecat,System Design"
+        data-title="Architecting Ultra-Low Latency Voice AI Agents with Pipecat & SileroVAD">
+        <div class="blog-card-header">
+          <div class="blog-card-tags">
+            <span class="blog-pill">Voice AI</span>
+            <span class="blog-pill">Pipecat</span>
+            <span class="blog-pill">System Design</span>
+          </div>
+          <span class="blog-read-badge">⏱️ 6 min read</span>
+        </div>
+        <h2 class="blog-card-title">
+          <a href="voice-ai-latency-optimization.html">Architecting Ultra-Low Latency Voice AI Agents with Pipecat &
+            SileroVAD</a>
+        </h2>
+        <p class="blog-card-excerpt">
+          How we reduced end-to-end voice turnaround time from 1.8s down to sub-500ms for natural, human-like telephone
+          conversations.
+        </p>
+        <div class="blog-card-footer">
+          <span class="blog-date">3rd August 2026</span>
+          <a href="voice-ai-latency-optimization.html" class="read-more-btn">Read Article <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="blog-card" data-tags="GenAI,LoRA,PyTorch"
+        data-title="LoRA vs Full Fine-Tuning for Domain-Specific Speech Models">
+        <div class="blog-card-header">
+          <div class="blog-card-tags">
+            <span class="blog-pill">GenAI</span>
+            <span class="blog-pill">LoRA</span>
+            <span class="blog-pill">PyTorch</span>
+          </div>
+          <span class="blog-read-badge">⏱️ 8 min read</span>
+        </div>
+        <h2 class="blog-card-title">
+          <a href="lora-speech-fine-tuning.html">LoRA vs Full Fine-Tuning for Domain-Specific Speech Models</a>
+        </h2>
+        <p class="blog-card-excerpt">
+          Practical benchmarks and lessons fine-tuning Whisper and Conformer models on specialized enterprise vocabulary
+          with 75% less VRAM.
+        </p>
+        <div class="blog-card-footer">
+          <span class="blog-date">20th July 2026</span>
+          <a href="lora-speech-fine-tuning.html" class="read-more-btn">Read Article <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- Post 3 -->
+      <article class="blog-card" data-tags="Agents,LangChain,Agno"
+        data-title="Building Resilient Autonomous Agent Workflows with LangChain & Agno">
+        <div class="blog-card-header">
+          <div class="blog-card-tags">
+            <span class="blog-pill">Agents</span>
+            <span class="blog-pill">LangChain</span>
+            <span class="blog-pill">Agno</span>
+          </div>
+          <span class="blog-read-badge">⏱️ 7 min read</span>
+        </div>
+        <h2 class="blog-card-title">
+          <a href="autonomous-agent-workflows.html">Building Resilient Autonomous Agent Workflows with LangChain &
+            Agno</a>
+        </h2>
+        <p class="blog-card-excerpt">
+          Architecting production-ready AI agents with 85%+ resolution rates using state machine checkpoints, schema
+          validation, and guardrails.
+        </p>
+        <div class="blog-card-footer">
+          <span class="blog-date">17th June 2026</span>
+          <a href="autonomous-agent-workflows.html" class="read-more-btn">Read Article <span>→</span></a>
+        </div>
+      </article>
+
+    </div>
+
+    <div id="no-articles-found"
+      style="display: none; text-align: center; padding: 40px 20px; color: var(--text-muted);">
+      <p style="font-size: 1.2rem; font-weight: 700;">No articles match your search or filter.</p>
+      <button class="btn btn-secondary" onclick="resetBlogFilters()" style="margin-top: 12px;">Reset Filters</button>
+    </div>
+
+  </main>
+
+  <!-- WAVE HORIZON TRANSITION -->
+  <div class="footer-wave-container" aria-hidden="true">
+    <svg class="footer-wave" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"
+      preserveAspectRatio="none">
+      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#66BFBF" />
+    </svg>
+  </div>
+
+  <!-- BOTTOM CONTAINER (FOOTER) -->
+  <footer class="bottom-container">
+    <div class="footer-inner">
+      <div class="footer-status-card">
+        <span class="live-dot-pulse"></span>
+        <span class="status-location">📍 Gurgaon, India</span>
+        <span class="status-divider">•</span>
+        <span class="status-time" id="live-local-time">08:50 PM IST</span>
+      </div>
+
+      <div class="footer-links-dock">
+        <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener"><span
+            class="pill-icon">🐙</span><span>GitHub</span></a>
+        <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener"><span
+            class="pill-icon">💼</span><span>LinkedIn</span></a>
+        <a class="footer-pill" href="../resume.pdf" target="_blank" rel="noopener"><span
+            class="pill-icon">📄</span><span>Resume</span></a>
+        <a class="footer-pill" href="mailto:milindw.97@gmail.com"><span
+            class="pill-icon">✉️</span><span>Email</span></a>
+      </div>
+
+      <p class="copyright-text">© 2026 Milind Wadhwa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../app.js"></script>
+</body>
+
+</html>
