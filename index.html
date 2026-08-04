@@ -20,8 +20,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Jersey+15&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%230F172A%22/><text x=%2250%%22 y=%2254%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216%22 font-weight=%22bold%22 fill=%22%2310B981%22>&gt;_</text></svg>">
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -32,43 +35,86 @@
   <header class="navbar-wrapper">
     <nav class="floating-dock" id="floating-dock">
 
-      <!-- Mode Switcher Segmented Control (Blog <> Portfolio) -->
+      <!-- Mode Switcher Segmented Control (Portfolio / Blog) -->
       <div class="dock-mode-switcher" id="dock-mode-switcher">
         <span class="mode-glider" aria-hidden="true"></span>
-        <a href="blog.html" class="mode-pill" id="mode-btn-blog" aria-label="Go to Blog">
-          <span class="mode-icon">✍️</span>
+        <a href="#blog" class="mode-pill" id="mode-btn-blog" aria-label="Blog mode">
+          <span class="mode-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </span>
           <span class="mode-text">Blog</span>
         </a>
         <a href="#top" class="mode-pill active" id="mode-btn-portfolio" aria-label="Portfolio mode">
-          <span class="mode-icon">💼</span>
+          <span class="mode-icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </span>
           <span class="mode-text">Portfolio</span>
         </a>
       </div>
 
       <!-- Portfolio Navigation Menu Links -->
       <ul class="dock-menu" id="nav-links">
-        <li class="dock-item"><a href="#top" class="dock-link active"><span
-              class="dock-icon">🏠</span><span>Home</span></a></li>
-        <li class="dock-item"><a href="#about" class="dock-link"><span
-              class="dock-icon">👨‍💻</span><span>About</span></a></li>
-        <li class="dock-item"><a href="#skills" class="dock-link"><span
-              class="dock-icon">⚡</span><span>Skills</span></a></li>
-        <li class="dock-item"><a href="#experience" class="dock-link"><span
-              class="dock-icon">🗓️</span><span>Experience</span></a></li>
-        <li class="dock-item"><a href="#projects" class="dock-link"><span
-              class="dock-icon">💡</span><span>Projects</span></a></li>
+        <li class="dock-item"><a href="#top" class="dock-link active"><span class="dock-icon"><svg width="14"
+                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg></span><span>Home</span></a></li>
+        <li class="dock-item"><a href="#about" class="dock-link"><span class="dock-icon"><svg width="14" height="14"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg></span><span>About</span></a></li>
+        <li class="dock-item"><a href="#skills" class="dock-link"><span class="dock-icon"><svg width="14" height="14"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg></span><span>Skills</span></a></li>
+        <li class="dock-item"><a href="#experience" class="dock-link"><span class="dock-icon"><svg width="14"
+                height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg></span><span>Experience</span></a></li>
+        <li class="dock-item"><a href="#projects" class="dock-link"><span class="dock-icon"><svg width="14" height="14"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg></span><span>Projects</span></a></li>
       </ul>
 
       <!-- Right: Interactive Quick Connect Pill + Resume + Mobile Hamburger -->
       <div class="dock-actions">
         <a href="resume.pdf" target="_blank" rel="noopener" class="dock-resume-btn" title="View Resume PDF">
-          <span>📄</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
           <span class="btn-label">Resume</span>
         </a>
 
         <a href="#contact" class="dock-cta-btn">
-          <span class="wave-hand">👋</span>
-          <span class="btn-label">Say Hi</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+          <span class="btn-label">Contact</span>
         </a>
 
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -88,35 +134,7 @@
 
     <!-- TOP CONTAINER (HERO BANNER) -->
     <header class="top-container" id="top">
-      <!-- Ambient Floating Clouds (Padded viewBox to prevent clipping) -->
-      <svg class="cloud top-cloud" viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M25 50h70a18 18 0 0 0 0-36 24 24 0 0 0-46-7 15 15 0 0 0-26 19 12 12 0 0 0 2 24z"
-          fill="var(--hero-cloud)" />
-      </svg>
-
-      <svg class="cloud bottom-cloud" viewBox="0 0 120 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 52h80a18 18 0 0 0 0-36 26 26 0 0 0-48-9 16 16 0 0 0-34 21 14 14 0 0 0 2 24z"
-          fill="var(--hero-cloud)" />
-      </svg>
-
-      <svg class="cloud small-cloud" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 44h55a14 14 0 0 0 0-28 18 18 0 0 0-34-6 12 12 0 0 0-23 16 10 10 0 0 0 2 18z"
-          fill="var(--hero-cloud)" />
-      </svg>
-
-      <!-- Floating Tech Badges / Stickers (Cursor default) -->
-      <div class="floating-sticker sticker-1" title="GenAI & LLMs">
-        <span>🧠</span> GenAI & LLMs
-      </div>
-      <div class="floating-sticker sticker-2" title="Low Latency Voice AI">
-        <span>🎙️</span> Voice AI Agents
-      </div>
-      <div class="floating-sticker sticker-3" title="Distributed Async Services">
-        <span>⚡</span> High-Scale Backend
-      </div>
-      <div class="floating-sticker sticker-4" title="Event-Driven Queues">
-        <span>🚀</span> Kafka & AWS
-      </div>
+      <!-- Floating Tech Badges / Stickers removed for dark theme -->
 
       <div class="hero-content">
 
@@ -128,89 +146,46 @@
           </span>
         </h2>
 
-        <!-- Creative Developer Workstation & AI SVG Illustration -->
-        <div class="hero-illustration">
-          <svg viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Desk -->
-            <path d="M30 290h440v14H30z" fill="#D69E2E" rx="7" />
-            <path d="M70 304v16h16v-16H70zM414 304v16h16v-16h-16z" fill="#B7791F" />
+        <!-- Interactive Senior Agent Terminal Window -->
+        <div class="hero-terminal-wrapper">
+          <div class="hero-terminal-window">
+            <!-- Window Header with Tabs -->
+            <div class="terminal-header">
+              <div class="terminal-controls">
+                <span class="ctrl-dot red"></span>
+                <span class="ctrl-dot yellow"></span>
+                <span class="ctrl-dot green"></span>
+              </div>
 
-            <!-- Computer Stand -->
-            <path d="M230 250h40v40h-40z" fill="#94A3B8" />
-            <path d="M200 286h100v8H200z" fill="#64748B" rx="4" />
+              <!-- Interactive Tab Strip -->
+              <div class="terminal-tabs" id="terminal-tabs-strip">
+                <button class="term-tab active" data-tab="0" type="button" aria-label="FastAPI Service Tab">
+                  <span class="tab-label">fastapi-service</span>
+                </button>
+                <button class="term-tab" data-tab="1" type="button" aria-label="Voice Pipeline Tab">
+                  <span class="tab-label">voice-pipeline</span>
+                </button>
+                <button class="term-tab" data-tab="2" type="button" aria-label="Cluster Deploy Tab">
+                  <span class="tab-label">cluster-deploy</span>
+                </button>
+                <button class="term-tab" data-tab="3" type="button" aria-label="LoRA Fine-Tune Tab">
+                  <span class="tab-label">lora-finetune</span>
+                </button>
+              </div>
 
-            <!-- Monitor Frame -->
-            <rect x="90" y="40" width="320" height="210" rx="16" fill="#1E293B" stroke="#0F172A" stroke-width="4" />
-            <!-- Screen Glass -->
-            <rect x="104" y="54" width="292" height="182" rx="8" fill="#0F172A" />
+              <!-- Status Badge Removed -->
+            </div>
 
-            <!-- Code IDE Window Top Bar -->
-            <rect x="104" y="54" width="292" height="22" rx="8" fill="#1E293B" />
-            <circle cx="120" cy="65" r="4" fill="#EF4444" />
-            <circle cx="132" cy="65" r="4" fill="#F59E0B" />
-            <circle cx="144" cy="65" r="4" fill="#10B981" />
-            <rect x="165" y="60" width="80" height="10" rx="3" fill="#334155" />
-
-            <!-- Code Lines inside Monitor -->
-            <rect x="120" y="90" width="70" height="8" rx="4" fill="#60A5FA" />
-            <rect x="196" y="90" width="90" height="8" rx="4" fill="#34D399" />
-
-            <rect x="136" y="110" width="110" height="7" rx="3" fill="#F472B6" />
-            <rect x="252" y="110" width="60" height="7" rx="3" fill="#FBBF24" />
-
-            <rect x="136" y="128" width="140" height="7" rx="3" fill="#94A3B8" />
-            <rect x="136" y="146" width="80" height="7" rx="3" fill="#A78BFA" />
-
-            <!-- Blinking Terminal Command Line -->
-            <g>
-              <rect x="120" y="170" width="130" height="12" rx="3" fill="#1E293B" />
-              <text x="126" y="179" fill="#10B981" font-size="8" font-family="monospace">&gt;
-                agent.run(stream=True)</text>
-              <rect x="246" y="172" width="6" height="8" fill="#10B981" class="term-cursor" />
-            </g>
-
-            <!-- Interactive AI Neural Network Graph on Screen (Pulsing Nodes) -->
-            <g opacity="0.95">
-              <circle cx="330" cy="115" r="14" fill="#11999E" class="ai-pulse-node" />
-              <text x="330" y="119" fill="#FFF" font-size="9" font-weight="bold" text-anchor="middle"
-                font-family="monospace">LLM</text>
-
-              <circle cx="290" cy="155" r="9" fill="#38BDF8" class="ai-pulse-node" style="animation-delay: -1s;" />
-              <circle cx="365" cy="160" r="11" fill="#818CF8" class="ai-pulse-node" style="animation-delay: -2s;" />
-              <circle cx="330" cy="200" r="10" fill="#34D399" class="ai-pulse-node" style="animation-delay: -0.5s;" />
-
-              <!-- Connecting Vectors -->
-              <path d="M322 127l-24 23M338 127l20 25M298 162l22 28M355 168l-18 22" stroke="#64748B" stroke-width="2"
-                stroke-dasharray="3 3" />
-            </g>
-
-            <!-- App Output Status Pill (Generic AI) -->
-            <rect x="120" y="202" width="130" height="18" rx="4" fill="#11999E" opacity="0.9" />
-            <text x="185" y="215" fill="#FFFFFF" font-size="9" font-family="sans-serif" font-weight="700"
-              text-anchor="middle">Deploy Agent</text>
-
-            <!-- Keyboard & Mouse -->
-            <rect x="180" y="280" width="140" height="12" rx="4" fill="#CBD5E1" />
-            <rect x="340" y="280" width="22" height="12" rx="6" fill="#CBD5E1" />
-
-            <!-- Animated Steaming Coffee Cup -->
-            <g>
-              <rect x="60" y="260" width="24" height="30" rx="4" fill="#FFFFFF" />
-              <path d="M84 266h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4h-8" stroke="#FFFFFF" stroke-width="3" fill="none" />
-              <rect x="60" y="270" width="24" height="6" fill="#11999E" />
-              <!-- Steam Particles -->
-              <path class="steam-1" d="M66 252c-2-4 2-6 2-10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                fill="none" />
-              <path class="steam-2" d="M74 252c2-4-2-6-2-10" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
-                fill="none" />
-            </g>
-
-            <!-- Potted Plant on Desk -->
-            <path d="M420 274h24l-4 16h-16z" fill="#EA580C" />
-            <circle cx="432" cy="265" r="10" fill="#10B981" />
-            <circle cx="426" cy="260" r="7" fill="#34D399" />
-            <circle cx="438" cy="258" r="8" fill="#059669" />
-          </svg>
+            <!-- Terminal Screen Body (Locked Static Height) -->
+            <div class="terminal-body" id="hero-terminal-body">
+              <div class="terminal-line command-line">
+                <span class="term-prompt">milind@agent-core:~$</span>
+                <span class="term-cmd" id="terminal-cmd-text"></span>
+                <span class="term-cursor" id="terminal-cursor"></span>
+              </div>
+              <div class="terminal-output" id="terminal-output-container"></div>
+            </div>
+          </div>
         </div>
 
         <div class="hero-actions">
@@ -252,10 +227,19 @@
           <div class="profile-pic-ring">
             <img src="images/milind.jpg" alt="Milind Wadhwa" class="profile-pic">
           </div>
-          <div class="profile-pic-badge" title="GenAI Engineer">🤖</div>
+          <div class="profile-pic-badge" title="GenAI Engineer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+              <circle cx="12" cy="5" r="2"></circle>
+              <path d="M12 7v4"></path>
+              <line x1="8" y1="16" x2="8" y2="16"></line>
+              <line x1="16" y1="16" x2="16" y2="16"></line>
+            </svg>
+          </div>
         </div>
 
-        <h2>Hello</h2>
+        <h2>Hello!</h2>
 
         <p>
           I’m <strong class="profile-highlight">Milind Wadhwa</strong>, a Senior Software Engineer based in
@@ -319,9 +303,33 @@
         </p>
 
         <!-- Skill Row 1: Agentic AI Platform Engineering -->
-        <div class="skill-row skill-row-left">
-          <div class="skill-icon-wrapper">
-            <span class="icon-emoji" role="img" aria-label="Agentic AI">🧠</span>
+        <div class="skill-row skill-row-left skill-row-ai">
+          <div class="skill-icon-wrapper skill-icon-ai">
+            <span class="icon-svg" aria-label="Agentic AI">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C084FC" />
+                    <stop offset="100%" stop-color="#8B5CF6" />
+                  </linearGradient>
+                  <linearGradient id="aiFaceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#1E1E38" />
+                    <stop offset="100%" stop-color="#0F0F26" />
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="30" fill="url(#aiGrad)" fill-opacity="0.15" stroke="url(#aiGrad)" stroke-width="1.5" />
+                <rect x="16" y="22" width="32" height="24" rx="6" fill="url(#aiFaceGrad)" stroke="url(#aiGrad)" stroke-width="2" />
+                <circle cx="26" cy="31" r="3.5" fill="#38BDF8" />
+                <circle cx="26" cy="31" r="1.5" fill="#FFF" />
+                <circle cx="38" cy="31" r="3.5" fill="#38BDF8" />
+                <circle cx="38" cy="31" r="1.5" fill="#FFF" />
+                <rect x="30" y="14" width="4" height="8" fill="url(#aiGrad)" rx="1.5" />
+                <circle cx="32" cy="11" r="3.5" fill="#E879F9" />
+                <path d="M24 38H40" stroke="url(#aiGrad)" stroke-width="2" stroke-linecap="round" />
+                <path d="M12 28C10 24 16 18 20 20" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round" fill="none" />
+                <path d="M52 28C54 24 48 18 44 20" stroke="#C084FC" stroke-width="1.5" stroke-linecap="round" fill="none" />
+              </svg>
+            </span>
           </div>
           <div class="skill-content">
             <h3>Agentic AI Platform Engineering</h3>
@@ -348,9 +356,32 @@
         </div>
 
         <!-- Skill Row 2: Distributed Backend & Microservices -->
-        <div class="skill-row skill-row-right">
-          <div class="skill-icon-wrapper">
-            <span class="icon-emoji" role="img" aria-label="Backend Architecture">⚡</span>
+        <div class="skill-row skill-row-right skill-row-backend">
+          <div class="skill-icon-wrapper skill-icon-backend">
+            <span class="icon-svg" aria-label="Backend Architecture">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="backGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#38BDF8" />
+                    <stop offset="100%" stop-color="#0284C7" />
+                  </linearGradient>
+                  <linearGradient id="serverGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#1E293B" />
+                    <stop offset="100%" stop-color="#0F172A" />
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="30" fill="url(#backGrad)" fill-opacity="0.15" stroke="url(#backGrad)" stroke-width="1.5" />
+                <rect x="14" y="16" width="36" height="13" rx="3" fill="url(#serverGrad)" stroke="url(#backGrad)" stroke-width="2" />
+                <circle cx="20" cy="22.5" r="2.5" fill="#34D399" />
+                <circle cx="28" cy="22.5" r="2" fill="url(#backGrad)" />
+                <circle cx="34" cy="22.5" r="2" fill="url(#backGrad)" />
+                <rect x="14" y="35" width="36" height="13" rx="3" fill="url(#serverGrad)" stroke="url(#backGrad)" stroke-width="2" />
+                <circle cx="20" cy="41.5" r="2.5" fill="#34D399" />
+                <circle cx="28" cy="41.5" r="2" fill="url(#backGrad)" />
+                <circle cx="34" cy="41.5" r="2" fill="url(#backGrad)" />
+                <path d="M26 29v6M38 29v6" stroke="#38BDF8" stroke-width="2" stroke-dasharray="2 2" />
+              </svg>
+            </span>
           </div>
           <div class="skill-content">
             <h3>Distributed Backend & Microservices</h3>
@@ -377,9 +408,23 @@
         </div>
 
         <!-- Skill Row 3: Cloud & DevOps -->
-        <div class="skill-row skill-row-left">
-          <div class="skill-icon-wrapper">
-            <span class="icon-emoji" role="img" aria-label="Cloud & DevOps">☁️</span>
+        <div class="skill-row skill-row-left skill-row-cloud">
+          <div class="skill-icon-wrapper skill-icon-cloud">
+            <span class="icon-svg" aria-label="Cloud & DevOps">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FB923C" />
+                    <stop offset="100%" stop-color="#EA580C" />
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="30" fill="url(#cloudGrad)" fill-opacity="0.15" stroke="url(#cloudGrad)" stroke-width="1.5" />
+                <path d="M44 36c0 4.4-3.6 8-8 8H24c-5 0-9-4-9-9 0-4.7 3.5-8.6 8.1-9 .8-4.5 4.7-8 9.4-8 5.5 0 10 4.5 10 10 0 .7-.1 1.4-.3 2.1.2 0 .4-.1.8-.1 4.4 0 8 3.6 8 8z" fill="url(#cloudGrad)" />
+                <rect x="25" y="27" width="14" height="11" rx="2" fill="#1E293B" stroke="#FFF" stroke-width="1.5" />
+                <line x1="29" y1="27" x2="29" y2="38" stroke="#FFF" stroke-width="1" />
+                <line x1="35" y1="27" x2="35" y2="38" stroke="#FFF" stroke-width="1" />
+              </svg>
+            </span>
           </div>
           <div class="skill-content">
             <h3>Cloud Infrastructure & DevOps</h3>
@@ -402,9 +447,24 @@
         </div>
 
         <!-- Skill Row 4: Observability & Team Leadership -->
-        <div class="skill-row skill-row-right">
-          <div class="skill-icon-wrapper">
-            <span class="icon-emoji" role="img" aria-label="Observability & Mentorship">📊</span>
+        <div class="skill-row skill-row-right skill-row-observability">
+          <div class="skill-icon-wrapper skill-icon-observability">
+            <span class="icon-svg" aria-label="Observability & Mentorship">
+              <svg width="48" height="48" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="obsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FB7185" />
+                    <stop offset="100%" stop-color="#E11D48" />
+                  </linearGradient>
+                </defs>
+                <circle cx="32" cy="32" r="30" fill="url(#obsGrad)" fill-opacity="0.15" stroke="url(#obsGrad)" stroke-width="1.5" />
+                <rect x="20" y="32" width="6" height="15" rx="2" fill="url(#obsGrad)" />
+                <rect x="29" y="20" width="6" height="27" rx="2" fill="url(#obsGrad)" />
+                <rect x="38" y="26" width="6" height="21" rx="2" fill="url(#obsGrad)" />
+                <path d="M16 28l7 6 9-14 9 8 7-12" stroke="#FFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="48" cy="16" r="3" fill="#FB7185" stroke="#FFF" stroke-width="1" />
+              </svg>
+            </span>
           </div>
           <div class="skill-content">
             <h3>Observability & Team Leadership</h3>
@@ -433,150 +493,291 @@
       <!-- CREATIVE VERTICAL TIMELINE EXPERIENCE SECTION -->
       <section class="experience-section" id="experience">
         <h2>Work Experience</h2>
-        <p style="text-align: center; max-width: 650px; margin: 0 auto 30px auto;">
-          7+ years of driving innovation in Generative AI, cloud platforms, and distributed systems.
+        <p style="text-align: center; max-width: 680px; margin: 0 auto 30px auto;">
+          7+ years of driving innovation in Generative AI, cloud platforms, and distributed systems — featuring proven
+          leadership and <strong>accelerated career progression</strong>.
         </p>
 
         <div class="timeline-container">
 
           <!-- Milestone 1: Bidgely -->
           <div class="timeline-milestone">
-            <div class="milestone-node node-bidgely" title="Bidgely">🌱</div>
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <div class="timeline-company-title">
-                  Software Development Engineer - 3 @ <a href="https://www.bidgely.com" target="_blank"
-                    rel="noopener">Bidgely ↗</a>
+            <div class="milestone-node node-bidgely" title="Bidgely">
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="bidgelyNodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34D399" />
+                    <stop offset="100%" stop-color="#059669" />
+                  </linearGradient>
+                </defs>
+                <path d="M6 26C6 16 16 6 26 6C26 16 16 26 6 26Z" fill="url(#bidgelyNodeGrad)" />
+                <path d="M15 8L11 17H16L15 24L21 15H16L17 8H15Z" fill="#FFF" />
+              </svg>
+            </div>
+            <div class="timeline-card company-card">
+              <div class="company-card-header">
+                <div class="company-brand-row">
+                  <div class="company-title-area">
+                    <h3 class="company-name"><a href="https://www.bidgely.com" target="_blank" rel="noopener">Bidgely
+                        ↗</a></h3>
+                    <span class="company-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg> Gurgaon, Haryana (Remote)</span>
+                  </div>
+                  <span class="company-tenure-badge">06/2026 – Present</span>
                 </div>
-                <span class="timeline-badge-date">06/2026 - Present</span>
               </div>
-              <div class="timeline-location">📍 Gurgaon, Haryana, India (Remote)</div>
 
-              <details class="timeline-accordion" open>
-                <summary>Conversational Energy Assistant Chat & Voice Agents</summary>
-                <ul class="timeline-bullets">
-                  <li>Architecting advanced conversational chat and voice agents to analyze home utility bills, provide
-                    detailed energy insights, and suggest optimal billing rate plans.</li>
-                  <li>Developing LLM-driven agentic pipelines to deliver actionable recommendations for lowering
-                    electricity consumption and optimizing overall home energy usage.</li>
-                  <li>Integrating real-time voice and messaging frameworks for low-latency, natural dialogue systems in
-                    consumer utility engagement.</li>
-                </ul>
-              </details>
+              <div class="nested-roles-container">
+                <div class="nested-role-box">
+                  <div class="nested-role-header">
+                    <div class="nested-role-title-row">
+                      <div class="role-title-wrap">
+                        <span class="role-stepper-dot"></span>
+                        <h4 class="nested-role-title">Software Development Engineer - 3</h4>
+                      </div>
+                      <span class="role-date-tag">06/2026 – Present</span>
+                    </div>
+                  </div>
+
+                  <details class="timeline-accordion" open>
+                    <summary>Conversational Energy Assistant Chat & Voice Agents</summary>
+                    <ul class="timeline-bullets">
+                      <li>Architecting advanced conversational chat and voice agents to analyze home utility bills,
+                        provide
+                        detailed energy insights, and suggest optimal billing rate plans.</li>
+                      <li>Developing LLM-driven agentic pipelines to deliver actionable recommendations for lowering
+                        electricity consumption and optimizing overall home energy usage.</li>
+                      <li>Integrating real-time voice and messaging frameworks for low-latency, natural dialogue systems
+                        in
+                        consumer utility engagement.</li>
+                    </ul>
+                  </details>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Milestone 2: Plivo SDE 2 -->
+          <!-- Milestone 2: Plivo Communications (Master Group with Nested Mini-Boxes & Promotion Track) -->
           <div class="timeline-milestone">
-            <div class="milestone-node node-plivo" title="Plivo">💬</div>
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <div class="timeline-company-title">
-                  Software Development Engineer - 2 @ <a href="https://www.plivo.com" target="_blank"
-                    rel="noopener">Plivo
-                    Communications ↗</a>
+            <div class="milestone-node node-plivo node-promoted" title="Plivo Communications">
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="plivoNodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#38BDF8" />
+                    <stop offset="100%" stop-color="#2563EB" />
+                  </linearGradient>
+                </defs>
+                <rect x="4" y="5" width="18" height="14" rx="4" fill="url(#plivoNodeGrad)" />
+                <path d="M6 19L3 23L9 19H6Z" fill="url(#plivoNodeGrad)" />
+                <circle cx="9" cy="12" r="1.5" fill="#FFF" />
+                <circle cx="13" cy="12" r="1.5" fill="#FFF" />
+                <circle cx="17" cy="12" r="1.5" fill="#FFF" />
+                <rect x="15" y="13" width="13" height="10" rx="3" fill="#38BDF8" />
+                <path d="M25 23L27 25L24 23H25Z" fill="#38BDF8" />
+              </svg>
+              <span class="promo-node-badge" title="Promoted to SDE-2">▲</span>
+            </div>
+            <div class="timeline-card company-card company-card-promoted">
+              <div class="company-card-header">
+                <div class="company-brand-row">
+                  <div class="company-title-area">
+                    <h3 class="company-name"><a href="https://www.plivo.com" target="_blank" rel="noopener">Plivo
+                        Communications ↗</a></h3>
+                    <span class="company-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg> Bangalore, Karnataka</span>
+                  </div>
+                  <div class="company-badges-wrap">
+                    <span class="company-promo-pill">▲ 1 Promotion (SDE-1 → SDE-2)</span>
+                    <span class="company-tenure-badge">12/2021 – 05/2026 · 4 yrs 6 mos</span>
+                  </div>
                 </div>
-                <span class="timeline-badge-date">01/2024 - 05/2026</span>
               </div>
-              <div class="timeline-location">📍 Bangalore, Karnataka (On-site)</div>
 
-              <details class="timeline-accordion" open>
-                <summary>Engineering Voice AI Agents & Multimodal Workflows</summary>
-                <ul class="timeline-bullets">
-                  <li>Engineered low-latency Voice AI Agents utilizing Pipecat, SileroVAD, Deepgram, and ElevenLabs for
-                    natural voice interactions.</li>
-                  <li>Spearheaded model optimization using LoRA fine-tuning for STT models to significantly reduce
-                    transcription latency and improve accuracy.</li>
-                  <li>Led technical integration of multi-modal LLMs and Vector Databases, optimizing RAG pipelines for
-                    superior retrieval across WhatsApp, Webchat, and SMS channels.</li>
-                  <li>Architected and deployed a production-ready Agentic AI ecosystem leveraging LangChain and Agno to
-                    automate support workflows with 75% resolution accuracy.</li>
-                  <li>Mentored junior developers and conducted thorough PR reviews to maintain rigorous code quality and
-                    architectural standards.</li>
-                </ul>
-              </details>
+              <!-- Nested Mini-Boxes Container -->
+              <div class="nested-roles-container">
+
+                <!-- Mini-Box 1: SDE-2 (Promoted) -->
+                <div class="nested-role-box role-promoted-box">
+                  <div class="nested-role-header">
+                    <div class="nested-role-title-row">
+                      <div class="role-title-wrap">
+                        <span class="role-stepper-dot dot-promoted"></span>
+                        <h4 class="nested-role-title">Software Development Engineer - 2</h4>
+                        <span class="role-promo-chip">▲ Promoted</span>
+                      </div>
+                      <span class="role-date-tag">01/2024 – 05/2026</span>
+                    </div>
+                  </div>
+
+                  <details class="timeline-accordion" open>
+                    <summary>Engineering Voice AI Agents & Multimodal Workflows</summary>
+                    <ul class="timeline-bullets">
+                      <li>Engineered low-latency Voice AI Agents utilizing Pipecat, SileroVAD, Deepgram, and ElevenLabs
+                        for
+                        natural voice interactions.</li>
+                      <li>Spearheaded model optimization using LoRA fine-tuning for STT models to significantly reduce
+                        transcription latency and improve accuracy.</li>
+                      <li>Led technical integration of multi-modal LLMs and Vector Databases, optimizing RAG pipelines
+                        for
+                        superior retrieval across WhatsApp, Webchat, and SMS channels.</li>
+                      <li>Architected and deployed a production-ready Agentic AI ecosystem leveraging LangChain and Agno
+                        to
+                        automate support workflows with 75% resolution accuracy.</li>
+                      <li>Mentored junior developers and conducted thorough PR reviews to maintain rigorous code quality
+                        and
+                        architectural standards.</li>
+                    </ul>
+                  </details>
+                </div>
+
+                <!-- Sleek Promotion Connector Bridge -->
+                <div class="role-connector-bridge">
+                  <div class="bridge-line"></div>
+                  <div class="bridge-badge">
+                    <span class="bridge-arrow">▲</span>
+                    <span class="bridge-text"><strong>Fast-Track Promotion:</strong> Elevated to SDE-2 following async
+                      FastAPI redesign & 70% throughput boost</span>
+                  </div>
+                  <div class="bridge-line"></div>
+                </div>
+
+                <!-- Mini-Box 2: SDE-1 -->
+                <div class="nested-role-box">
+                  <div class="nested-role-header">
+                    <div class="nested-role-title-row">
+                      <div class="role-title-wrap">
+                        <span class="role-stepper-dot"></span>
+                        <h4 class="nested-role-title">Software Development Engineer - 1</h4>
+                      </div>
+                      <span class="role-date-tag">12/2021 – 12/2023</span>
+                    </div>
+                  </div>
+
+                  <details class="timeline-accordion" open>
+                    <summary>SaaS Platform Refactoring & Cloud Scalability</summary>
+                    <ul class="timeline-bullets">
+                      <li>Revitalized SaaS platform performance by migrating synchronous services to asynchronous
+                        FastAPI
+                        and implementing task parallelism via Amazon SQS, boosting efficiency by ~70%.</li>
+                      <li>Developed core platform APIs utilizing Flask and Golang for high-volume sales engagement
+                        applications.</li>
+                      <li>Automated ECS cloud deployments and configured EC2 auto-scaling via CloudWatch for 99.9%
+                        system
+                        availability.</li>
+                    </ul>
+                  </details>
+                </div>
+
+              </div>
             </div>
           </div>
 
-          <!-- Milestone 3: Plivo SDE 1 -->
+          <!-- Milestone 3: Optum (Master Group with Nested Mini-Boxes & PPO Conversion) -->
           <div class="timeline-milestone">
-            <div class="milestone-node node-plivo" title="Plivo">💬</div>
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <div class="timeline-company-title">
-                  Software Development Engineer - 1 @ <a href="https://www.plivo.com" target="_blank"
-                    rel="noopener">Plivo
-                    Communications ↗</a>
-                </div>
-                <span class="timeline-badge-date">12/2021 - 12/2023</span>
-              </div>
-              <div class="timeline-location">📍 Bangalore, Karnataka</div>
-
-              <details class="timeline-accordion" open>
-                <summary>SaaS Platform Refactoring & Cloud Scalability</summary>
-                <ul class="timeline-bullets">
-                  <li>Revitalized SaaS platform performance by migrating synchronous services to asynchronous FastAPI
-                    and
-                    implementing task parallelism via Amazon SQS, boosting efficiency by ~70%.</li>
-                  <li>Developed core platform APIs utilizing Flask and Golang for high-volume sales engagement
-                    applications.</li>
-                  <li>Automated ECS cloud deployments and configured EC2 auto-scaling via CloudWatch for 99.9% system
-                    availability.</li>
-                </ul>
-              </details>
+            <div class="milestone-node node-optum node-promoted" title="Optum (UnitedHealth Group)">
+              <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="optumNodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FB923C" />
+                    <stop offset="100%" stop-color="#EA580C" />
+                  </linearGradient>
+                </defs>
+                <path d="M16 4C20 4 26 6 26 12C26 18 20 24 16 28C12 24 6 18 6 12C6 6 12 4 16 4Z" fill="url(#optumNodeGrad)" />
+                <path d="M9 16H13L15 11L18 21L20 14L21 16H23" stroke="#FFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              </svg>
+              <span class="promo-node-badge" title="PPO Conversion">▲</span>
             </div>
-          </div>
-
-          <!-- Milestone 4: Optum ASE 2 -->
-          <div class="timeline-milestone">
-            <div class="milestone-node node-optum" title="Optum">🏥</div>
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <div class="timeline-company-title">
-                  Associate Software Engineer - 2 @ <a href="https://www.optum.com" target="_blank" rel="noopener">Optum
-                    (UnitedHealth Group) ↗</a>
+            <div class="timeline-card company-card company-card-promoted">
+              <div class="company-card-header">
+                <div class="company-brand-row">
+                  <div class="company-title-area">
+                    <h3 class="company-name"><a href="https://www.optum.com" target="_blank" rel="noopener">Optum
+                        (UnitedHealth Group) ↗</a></h3>
+                    <span class="company-location"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg> Hyderabad & Gurgaon, India</span>
+                  </div>
+                  <div class="company-badges-wrap">
+                    <span class="company-promo-pill">▲ Pre-Placement Offer (Intern → ASE-2)</span>
+                    <span class="company-tenure-badge">05/2018 – 12/2021 · 2 yrs 8 mos</span>
+                  </div>
                 </div>
-                <span class="timeline-badge-date">07/2019 - 12/2021</span>
               </div>
-              <div class="timeline-location">📍 Hyderabad, Telangana</div>
 
-              <details class="timeline-accordion" open>
-                <summary>Microservices & DevOps Automation</summary>
-                <ul class="timeline-bullets">
-                  <li>Built RESTful microservices using Spring Boot and Apache Kafka for real-time, event-driven
-                    healthcare data streaming.</li>
-                  <li>Automated CI/CD pipelines and containerized deployments on OpenShift using Docker and Jenkins.
-                  </li>
-                  <li>Reduced test execution duration by 40% via multi-threaded integration testing with Rest-Assured
-                    and
-                    Cucumber BDD.</li>
-                  <li>Implemented full-stack monitoring using Splunk, Elastic APM, and Dynatrace to improve system
-                    observability.</li>
-                </ul>
-              </details>
-            </div>
-          </div>
+              <!-- Nested Mini-Boxes Container -->
+              <div class="nested-roles-container">
 
-          <!-- Milestone 5: Optum Intern -->
-          <div class="timeline-milestone">
-            <div class="milestone-node node-optum" title="Optum Intern">🏥</div>
-            <div class="timeline-card">
-              <div class="timeline-card-header">
-                <div class="timeline-company-title">
-                  Software Engineering Intern @ <a href="https://www.optum.com" target="_blank" rel="noopener">Optum
-                    (UnitedHealth Group) ↗</a>
+                <!-- Mini-Box 1: ASE-2 (PPO Conversion) -->
+                <div class="nested-role-box role-promoted-box">
+                  <div class="nested-role-header">
+                    <div class="nested-role-title-row">
+                      <div class="role-title-wrap">
+                        <span class="role-stepper-dot dot-promoted"></span>
+                        <h4 class="nested-role-title">Associate Software Engineer - 2</h4>
+                        <span class="role-promo-chip">▲ PPO Conversion</span>
+                      </div>
+                      <span class="role-date-tag">07/2019 – 12/2021</span>
+                    </div>
+                  </div>
+
+                  <details class="timeline-accordion" open>
+                    <summary>Microservices & DevOps Automation</summary>
+                    <ul class="timeline-bullets">
+                      <li>Built RESTful microservices using Spring Boot and Apache Kafka for real-time, event-driven
+                        healthcare data streaming.</li>
+                      <li>Automated CI/CD pipelines and containerized deployments on OpenShift using Docker and Jenkins.
+                      </li>
+                      <li>Reduced test execution duration by 40% via multi-threaded integration testing with
+                        Rest-Assured
+                        and Cucumber BDD.</li>
+                      <li>Implemented full-stack monitoring using Splunk, Elastic APM, and Dynatrace to improve system
+                        observability.</li>
+                    </ul>
+                  </details>
                 </div>
-                <span class="timeline-badge-date">05/2018 - 07/2018</span>
-              </div>
-              <div class="timeline-location">📍 Gurgaon, Haryana</div>
 
-              <details class="timeline-accordion" open>
-                <summary>Observability & Anomaly Detection</summary>
-                <ul class="timeline-bullets">
-                  <li>Deployed an ELK Stack solution for real-time anomaly detection, successfully monitoring over 100K
-                    email transactions for irregularities.</li>
-                </ul>
-              </details>
+                <!-- Sleek Promotion / Conversion Connector Bridge -->
+                <div class="role-connector-bridge">
+                  <div class="bridge-line"></div>
+                  <div class="bridge-badge">
+                    <span class="bridge-arrow">▲</span>
+                    <span class="bridge-text"><strong>Full-Time Conversion:</strong> Awarded PPO and accelerated to
+                      ASE-2 after anomaly detection platform delivery</span>
+                  </div>
+                  <div class="bridge-line"></div>
+                </div>
+
+                <!-- Mini-Box 2: Intern -->
+                <div class="nested-role-box">
+                  <div class="nested-role-header">
+                    <div class="nested-role-title-row">
+                      <div class="role-title-wrap">
+                        <span class="role-stepper-dot"></span>
+                        <h4 class="nested-role-title">Software Engineering Intern</h4>
+                      </div>
+                      <span class="role-date-tag">05/2018 – 07/2018</span>
+                    </div>
+                  </div>
+
+                  <details class="timeline-accordion" open>
+                    <summary>Observability & Anomaly Detection</summary>
+                    <ul class="timeline-bullets">
+                      <li>Deployed an ELK Stack solution for real-time anomaly detection, successfully monitoring over
+                        100K
+                        email transactions for irregularities.</li>
+                    </ul>
+                  </details>
+                </div>
+
+              </div>
             </div>
           </div>
 
@@ -596,9 +797,23 @@
         <div class="projects-grid">
 
           <!-- Card 1: Omnichannel Agentic AI Platform -->
-          <div class="project-card">
+          <div class="project-card project-card-ai">
             <div>
-              <span class="project-icon">🤖</span>
+              <span class="project-icon project-icon-ai">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="projAiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#C084FC" />
+                      <stop offset="100%" stop-color="#8B5CF6" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="4" y="6" width="24" height="18" rx="6" fill="url(#projAiGrad)" />
+                  <path d="M8 24L6 28L12 24H8Z" fill="url(#projAiGrad)" />
+                  <circle cx="12" cy="15" r="2.5" fill="#FFF" />
+                  <circle cx="20" cy="15" r="2.5" fill="#FFF" />
+                  <path d="M13 19C14.5 20.2 17.5 20.2 19 19" stroke="#FFF" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </span>
               <h4>Omnichannel Agentic AI Platform</h4>
               <p>Architected a full production agentic platform across Voice, Chat, SMS, and WhatsApp —
                 with RAG pipelines, MCP tool integration, and LLM orchestration via LangChain & Agno.
@@ -617,9 +832,24 @@
           </div>
 
           <!-- Card 2: STT LoRA Fine-Tuning -->
-          <div class="project-card">
+          <div class="project-card project-card-lora">
             <div>
-              <span class="project-icon">⚡</span>
+              <span class="project-icon project-icon-lora">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="projLoraGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#38BDF8" />
+                      <stop offset="100%" stop-color="#0284C7" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="4" y="14" width="4" height="12" rx="2" fill="url(#projLoraGrad)" />
+                  <rect x="10" y="8" width="4" height="18" rx="2" fill="url(#projLoraGrad)" />
+                  <rect x="16" y="4" width="4" height="22" rx="2" fill="url(#projLoraGrad)" />
+                  <rect x="22" y="11" width="4" height="15" rx="2" fill="url(#projLoraGrad)" />
+                  <circle cx="16" cy="15" r="4.5" fill="#FFF" stroke="#0284C7" stroke-width="1.5" />
+                  <circle cx="16" cy="15" r="2" fill="#0284C7" />
+                </svg>
+              </span>
               <h4>STT Model LoRA Fine-Tuning</h4>
               <p>Applied parameter-efficient fine-tuning (PEFT) using LoRA on open-weights Speech-to-Text
                 models, significantly reducing transcription latency and improving domain-specific accuracy
@@ -637,9 +867,25 @@
           </div>
 
           <!-- Card 3: Async SaaS Platform Refactor -->
-          <div class="project-card">
+          <div class="project-card project-card-backend">
             <div>
-              <span class="project-icon">🔄</span>
+              <span class="project-icon project-icon-backend">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="projBackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#818CF8" />
+                      <stop offset="100%" stop-color="#4F46E5" />
+                    </linearGradient>
+                  </defs>
+                  <rect x="5" y="5" width="22" height="6" rx="2" fill="url(#projBackGrad)" />
+                  <rect x="5" y="13" width="22" height="6" rx="2" fill="url(#projBackGrad)" />
+                  <rect x="5" y="21" width="22" height="6" rx="2" fill="url(#projBackGrad)" />
+                  <path d="M14 8h4M14 16h4M14 24h4" stroke="#FFF" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="8" cy="8" r="1.5" fill="#FFF" />
+                  <circle cx="8" cy="16" r="1.5" fill="#FFF" />
+                  <circle cx="8" cy="24" r="1.5" fill="#FFF" />
+                </svg>
+              </span>
               <h4>Async SaaS Platform Refactor</h4>
               <p>Boosted platform efficiency by ~70% by migrating synchronous services to asynchronous
                 FastAPI and offloading background work to Amazon SQS queues, with auto-scaled ECS
@@ -657,9 +903,21 @@
           </div>
 
           <!-- Card 4: GenAI Energy Assistant -->
-          <div class="project-card">
+          <div class="project-card project-card-analytics">
             <div>
-              <span class="project-icon">💡</span>
+              <span class="project-icon project-icon-analytics">
+                <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="projAnalyticGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FB923C" />
+                      <stop offset="100%" stop-color="#EA580C" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M16 4L4 14v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V14L16 4z" fill="url(#projAnalyticGrad)" />
+                  <rect x="13" y="20" width="6" height="8" rx="1" fill="#0F172A" />
+                  <path d="M17 9l-4 6h4l-1 5 4-6h-4l1-5z" fill="#FFF" />
+                </svg>
+              </span>
               <h4>GenAI Energy Assistant</h4>
               <p>Building conversational chat and voice agents that analyze home utility bills, surface
                 energy insights, and recommend optimal billing rate plans — using LLM-driven agentic
@@ -691,16 +949,40 @@
         <div class="contact-card">
           <div class="contact-methods-tray">
             <a href="mailto:milindw.97@gmail.com" class="contact-method-pill">
-              <span>✉️</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
               <span>milindw.97@gmail.com</span>
             </a>
             <a href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener"
               class="contact-method-pill">
-              <span>💼</span>
-              <span>LinkedIn Profile</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://wa.me/917838469702?text=Hi%20Milind,%20reaching%20out%20via%20your%20portfolio"
+              target="_blank" rel="noopener" class="contact-method-pill contact-whatsapp-pill"
+              aria-label="Chat on WhatsApp">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                </path>
+              </svg>
+              <span>WhatsApp</span>
             </a>
             <div class="contact-method-pill">
-              <span>📍</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
               <span>Gurgaon, India</span>
             </div>
           </div>
@@ -744,8 +1026,7 @@
     <header class="top-container blog-hero-header">
       <div class="hero-content">
         <span class="eyebrow-badge">
-          <span class="emoji-bounce">✍️</span>
-          <span>Writings & Architecture</span>
+          <span>$ senior_engineer --mode=ai</span>
         </span>
         <h1 class="hero-title">Engineering Deep Dives</h1>
         <p class="hero-subtitle">
@@ -768,7 +1049,13 @@
         </div>
 
         <div class="blog-search-box">
-          <span class="search-icon">🔍</span>
+          <span class="search-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
           <input type="text" id="blog-search-input" placeholder="Search articles by title or keyword..."
             aria-label="Search blog posts">
         </div>
@@ -786,7 +1073,14 @@
               <span class="blog-pill">Pipecat</span>
               <span class="blog-pill">System Design</span>
             </div>
-            <span class="blog-read-badge">⏱️ 6 min read</span>
+            <span class="blog-read-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>6 min read</span>
+            </span>
           </div>
           <h2 class="blog-card-title">
             <a href="blog/voice-ai-latency-optimization.html">Architecting Ultra-Low Latency Voice AI Agents with
@@ -811,7 +1105,14 @@
               <span class="blog-pill">LoRA</span>
               <span class="blog-pill">PyTorch</span>
             </div>
-            <span class="blog-read-badge">⏱️ 8 min read</span>
+            <span class="blog-read-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>8 min read</span>
+            </span>
           </div>
           <h2 class="blog-card-title">
             <a href="blog/lora-speech-fine-tuning.html">LoRA vs Full Fine-Tuning for Domain-Specific Speech Models</a>
@@ -835,7 +1136,14 @@
               <span class="blog-pill">LangChain</span>
               <span class="blog-pill">Agno</span>
             </div>
-            <span class="blog-read-badge">⏱️ 7 min read</span>
+            <span class="blog-read-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <span>7 min read</span>
+            </span>
           </div>
           <h2 class="blog-card-title">
             <a href="blog/autonomous-agent-workflows.html">Building Resilient Autonomous Agent Workflows with LangChain
@@ -866,7 +1174,7 @@
   <div class="footer-wave-container" aria-hidden="true">
     <svg class="footer-wave" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none">
-      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#66BFBF" />
+      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#0A0F1A" />
     </svg>
   </div>
 
@@ -876,38 +1184,67 @@
       <!-- Live Status & Local Time Pill -->
       <div class="footer-status-card" title="Live Local Time in Gurgaon, India">
         <span class="live-dot-pulse"></span>
-        <span class="status-location">📍 Gurgaon, India</span>
+        <span class="status-location"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            style="display:inline-block; vertical-align:middle; margin-right:3px;">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>Gurgaon, India</span>
         <span class="status-divider">•</span>
-        <span class="status-time" id="live-local-time">08:46 PM IST</span>
+        <span class="status-time" id="live-local-time" style="color: #10B981;">08:46 PM IST</span>
       </div>
 
       <!-- Tactile Social Pill Links Dock -->
       <div class="footer-links-dock">
         <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener">
-          <span class="pill-icon">🐙</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+            </path>
+          </svg>
           <span>GitHub</span>
         </a>
         <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener">
-          <span class="pill-icon">💼</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
           <span>LinkedIn</span>
         </a>
         <a class="footer-pill" href="resume.pdf" target="_blank" rel="noopener">
-          <span class="pill-icon">📄</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+          </svg>
           <span>Resume</span>
         </a>
         <a class="footer-pill" href="mailto:milindw.97@gmail.com">
-          <span class="pill-icon">✉️</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
           <span>Email</span>
         </a>
         <a class="footer-pill back-to-top-pill" href="#top" id="footer-back-to-top">
-          <span class="rocket-icon">🚀</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
           <span>Back to Top</span>
         </a>
       </div>
 
       <!-- Playful Easter Egg Note & Copyright -->
       <p class="footer-tagline">
-        Crafted with ❤️ <span class="tagline-coffee">Love</span> & ☕ <span class="tagline-coffee">Coffee</span>
+        Designed &amp; Engineered with Precision by Milind Wadhwa
       </p>
       <p class="copyright-text">© 2026 Milind Wadhwa. All rights reserved.</p>
     </div>

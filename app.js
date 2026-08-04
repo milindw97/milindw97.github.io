@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavbarScroll();
   initMobileNav();
   initTypewriter();
+  initHeroTerminal();
   initContactForm();
   initActiveNavSpy();
   initTimelineScrollObserver();
@@ -255,7 +256,7 @@ function initInteractiveConfetti() {
 }
 
 function createSparkleBurst(x, y) {
-  const colors = ['#FFE15D', '#11999E', '#66BFBF', '#3B82F6', '#10B981', '#EC4899'];
+  const colors = ['#10B981', '#34D399', '#059669', '#6EE7B7', '#A7F3D0', '#064E3B'];
   const count = 18;
 
   for (let i = 0; i < count; i++) {
@@ -473,8 +474,13 @@ function initSeamlessViewSwitcher() {
     const switcherRect = switcher.getBoundingClientRect();
     const activeRect = activeEl.getBoundingClientRect();
 
-    const left = activeRect.left - switcherRect.left;
+    const clientLeft = switcher.clientLeft || 0;
+    const clientTop = switcher.clientTop || 0;
+
+    const left = activeRect.left - switcherRect.left - clientLeft;
+    const top = activeRect.top - switcherRect.top - clientTop;
     const width = activeRect.width;
+    const height = activeRect.height;
 
     if (width === 0) return; // Prevent 0-width collapse before layout
 
@@ -484,7 +490,8 @@ function initSeamlessViewSwitcher() {
     }
 
     glider.style.width = `${width}px`;
-    glider.style.transform = `translateX(${left}px)`;
+    glider.style.height = `${height}px`;
+    glider.style.transform = `translate(${left}px, ${top}px)`;
 
     if (immediate) {
       void glider.offsetWidth; // Force reflow
@@ -631,4 +638,146 @@ function initSeamlessViewSwitcher() {
     const curActive = switcher.querySelector('.mode-pill.active');
     if (curActive) updateGliderPosition(curActive, true);
   }, { passive: true });
+}
+
+/**
+ * Interactive Senior Agent Terminal Simulation with Tab Switching & Static Height
+ * Cycles through tabs automatically, responds instantly to user tab clicks,
+ * and starts typing on initial page load.
+ */
+function initHeroTerminal() {
+  const terminalBody = document.getElementById('hero-terminal-body');
+  const cmdText = document.getElementById('terminal-cmd-text');
+  const outputContainer = document.getElementById('terminal-output-container');
+  const tabButtons = document.querySelectorAll('.term-tab');
+
+  if (!terminalBody || !cmdText || !outputContainer) return;
+
+  const scenarios = [
+    {
+      tabIndex: 0,
+      command: 'uvicorn main:app --host 0.0.0.0 --port 8000 --workers 4 --loop uvloop',
+      logs: [
+        { time: '[00:01]', type: 'info', tag: '[UVICORN]', msg: 'Started worker pool [pid: 48920] on uvloop' },
+        { time: '[00:02]', type: 'agent', tag: '[ROUTER]', msg: 'Mounted 18 async API endpoints at /docs' },
+        { time: '[00:03]', type: 'agent', tag: '[REDIS]', msg: 'Connected pool (P99 latency: <span class="log-metric">1.2ms</span>)' },
+        { time: '[00:04]', type: 'success', tag: '[READY]', msg: 'Listening at <span class="log-metric">http://0.0.0.0:8000</span>' }
+      ]
+    },
+    {
+      tabIndex: 1,
+      command: 'python -m voice.pipeline --stream --webrtc',
+      logs: [
+        { time: '[00:01]', type: 'info', tag: '[AUDIO]', msg: 'Initialized WebRTC chunker & RingBuffer' },
+        { time: '[00:02]', type: 'agent', tag: '[WHISPER]', msg: 'Loaded v3-turbo streaming encoder' },
+        { time: '[00:03]', type: 'agent', tag: '[TTS]', msg: 'Connected ElevenLabs low-latency socket' },
+        { time: '[00:04]', type: 'success', tag: '[SUCCESS]', msg: 'P99 E2E Latency: <span class="log-metric">185ms</span> (Target <200ms)' }
+      ]
+    },
+    {
+      tabIndex: 2,
+      command: 'kubectl apply -f ./k8s/production/ --prune -l app=core-engine',
+      logs: [
+        { time: '[00:01]', type: 'info', tag: '[DISCOVERY]', msg: 'Verified 8 worker nodes across us-east' },
+        { time: '[00:02]', type: 'agent', tag: '[AUTOSCALE]', msg: 'Synced Kafka partitions & HPA targets' },
+        { time: '[00:03]', type: 'agent', tag: '[SECURITY]', msg: 'Verified mTLS mesh handshakes' },
+        { time: '[00:04]', type: 'success', tag: '[DEPLOYED]', msg: '8/8 pods online. Rate: <span class="log-metric">14.2k req/s</span>' }
+      ]
+    },
+    {
+      tabIndex: 3,
+      command: 'python fine_tune_lora.py --model=whisper-large-v3 --rank=16 --quant=int4',
+      logs: [
+        { time: '[00:01]', type: 'info', tag: '[DATASET]', msg: 'Loaded 8.5k domain speech transcripts' },
+        { time: '[00:02]', type: 'agent', tag: '[ADAPTERS]', msg: 'Injected LoRA weights into Q/K/V heads' },
+        { time: '[00:03]', type: 'agent', tag: '[CONVERGE]', msg: 'Loss: 2.14 -> 0.38 | WER: <span class="log-metric">14.8% -> 3.9%</span>' },
+        { time: '[00:04]', type: 'success', tag: '[EXPORTED]', msg: 'Saved INT4 GGUF. vRAM: <span class="log-metric">1.4 GB</span>' }
+      ]
+    }
+  ];
+
+  let currentScenarioIdx = 0;
+  let cycleTimer = null;
+  let typingInterval = null;
+  let logTimer = null;
+
+  // Update active tab button UI
+  function setActiveTabUI(index) {
+    tabButtons.forEach((btn, i) => {
+      btn.classList.toggle('active', i === index);
+    });
+  }
+
+  function clearPendingTimers() {
+    if (cycleTimer) clearTimeout(cycleTimer);
+    if (typingInterval) clearInterval(typingInterval);
+    if (logTimer) clearTimeout(logTimer);
+  }
+
+  function typeCommand(text, callback) {
+    cmdText.textContent = '';
+    let charIdx = 0;
+    typingInterval = setInterval(() => {
+      if (charIdx < text.length) {
+        cmdText.textContent += text.charAt(charIdx);
+        charIdx++;
+      } else {
+        clearInterval(typingInterval);
+        typingInterval = null;
+        logTimer = setTimeout(callback, 100);
+      }
+    }, 15);
+  }
+
+  function renderLogs(logs, index, callback) {
+    if (index >= logs.length) {
+      cycleTimer = setTimeout(callback, 4000);
+      return;
+    }
+
+    const log = logs[index];
+    const logEl = document.createElement('div');
+    logEl.className = 'term-log';
+
+    let tagClass = 'log-info';
+    if (log.type === 'agent') tagClass = 'log-agent';
+    else if (log.type === 'success') tagClass = 'log-success';
+
+    logEl.innerHTML = `<span class="log-time">${log.time}</span> <span class="${tagClass}">${log.tag}</span> ${log.msg}`;
+    outputContainer.appendChild(logEl);
+
+    logTimer = setTimeout(() => {
+      renderLogs(logs, index + 1, callback);
+    }, 220);
+  }
+
+  function playScenario(index) {
+    clearPendingTimers();
+    currentScenarioIdx = index;
+    const scenario = scenarios[currentScenarioIdx];
+
+    setActiveTabUI(scenario.tabIndex);
+    outputContainer.innerHTML = '';
+
+    typeCommand(scenario.command, () => {
+      renderLogs(scenario.logs, 0, () => {
+        // Advance to next tab
+        const nextIdx = (currentScenarioIdx + 1) % scenarios.length;
+        playScenario(nextIdx);
+      });
+    });
+  }
+
+  // Bind manual clicks to tabs for instant execution
+  tabButtons.forEach((btn, idx) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      playScenario(idx);
+    });
+  });
+
+  // Start typing the first scenario right away on page load
+  setTimeout(() => {
+    playScenario(0);
+  }, 250);
 }

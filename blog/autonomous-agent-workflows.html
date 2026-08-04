@@ -8,7 +8,10 @@
   <meta name="description"
     content="Designing multi-agent workflows with deterministic tool fallbacks, state machine checkpoints, and LangChain & Agno.">
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22><rect width=%2232%22 height=%2232%22 rx=%226%22 fill=%22%230F172A%22/><text x=%2250%%22 y=%2254%%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216%22 font-weight=%22bold%22 fill=%22%2310B981%22>&gt;_</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -21,22 +24,22 @@
       <div class="dock-mode-switcher" id="dock-mode-switcher">
         <span class="mode-glider" aria-hidden="true"></span>
         <a href="../index.html#blog" class="mode-pill active" id="mode-btn-blog" aria-label="Blog view">
-          <span class="mode-icon">✍️</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
           <span class="mode-text">Blog</span>
         </a>
         <a href="../index.html" class="mode-pill" id="mode-btn-portfolio" aria-label="Switch to Portfolio view">
-          <span class="mode-icon">💼</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
           <span class="mode-text">Portfolio</span>
         </a>
       </div>
 
       <div class="dock-actions">
         <a href="../resume.pdf" target="_blank" rel="noopener" class="dock-resume-btn" title="View Resume PDF">
-          <span>📄</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
           <span>Resume</span>
         </a>
         <a href="../index.html#contact" class="dock-cta-btn">
-          <span class="wave-hand">👋</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
           <span>Say Hi</span>
         </a>
       </div>
@@ -53,7 +56,10 @@
         <span class="article-tag">Agents</span>
         <span class="article-tag">LangChain</span>
         <span class="article-tag">Agno</span>
-        <span class="article-read-time">⏱️ 7 min read</span>
+        <span class="article-read-time">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>7 min read</span>
+        </span>
       </div>
       <h1 class="article-title">Building Resilient Autonomous Agent Workflows with LangChain & Agno</h1>
       <p class="article-subtitle">
@@ -90,7 +96,9 @@
       </ol>
 
       <div class="callout-card">
-        <span class="callout-icon">🛡️</span>
+        <span class="callout-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </span>
         <div>
           <strong>Production Rule:</strong> Never let an LLM execute destructive database actions directly without a
           two-phase confirmation or tokenized preview step.
@@ -138,14 +146,14 @@ response = support_agent.print_response("Where is my order #PLV-88231?")</code><
 
     <div class="article-footer-nav">
       <a href="../index.html#blog" class="btn btn-secondary">← Back to All Articles</a>
-      <a href="../index.html#contact" class="btn">Say Hi 💬</a>
+      <a href="../index.html#contact" class="btn">Say Hi →</a>
     </div>
   </main>
 
   <div class="footer-wave-container" aria-hidden="true">
     <svg class="footer-wave" viewBox="0 0 1440 90" fill="none" xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none">
-      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#66BFBF" />
+      <path d="M0,32 C360,75 480,10 720,45 C960,80 1080,15 1440,35 L1440,90 L0,90 Z" fill="#0A0F1A" />
     </svg>
   </div>
 
@@ -153,20 +161,28 @@ response = support_agent.print_response("Where is my order #PLV-88231?")</code><
     <div class="footer-inner">
       <div class="footer-status-card">
         <span class="live-dot-pulse"></span>
-        <span class="status-location">📍 Gurgaon, India</span>
+        <span class="status-location"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:3px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Gurgaon, India</span>
         <span class="status-divider">•</span>
         <span class="status-time" id="live-local-time">08:50 PM IST</span>
       </div>
 
       <div class="footer-links-dock">
-        <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener"><span
-            class="pill-icon">🐙</span><span>GitHub</span></a>
-        <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener"><span
-            class="pill-icon">💼</span><span>LinkedIn</span></a>
-        <a class="footer-pill" href="../resume.pdf" target="_blank" rel="noopener"><span
-            class="pill-icon">📄</span><span>Resume</span></a>
-        <a class="footer-pill" href="mailto:milindw.97@gmail.com"><span
-            class="pill-icon">✉️</span><span>Email</span></a>
+        <a class="footer-pill" href="https://github.com/milindw97" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          <span>GitHub</span>
+        </a>
+        <a class="footer-pill" href="https://linkedin.com/in/milind-97-wadhwa" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <span>LinkedIn</span>
+        </a>
+        <a class="footer-pill" href="../resume.pdf" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Resume</span>
+        </a>
+        <a class="footer-pill" href="mailto:milindw.97@gmail.com">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Email</span>
+        </a>
       </div>
 
       <p class="copyright-text">© 2026 Milind Wadhwa. All rights reserved.</p>
