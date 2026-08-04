@@ -346,11 +346,9 @@ html.initial-blog-mode #mode-btn-blog .mode-text {
   border-radius: var(--radius-pill);
   border: 1px solid rgba(17, 153, 158, 0.1);
   max-width: 550px;
-  height: 40px;
   opacity: 1;
   transform: scale(1);
   transform-origin: left center;
-  overflow: hidden;
   transition: max-width 0.38s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 0.26s ease,
     transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
@@ -358,6 +356,15 @@ html.initial-blog-mode #mode-btn-blog .mode-text {
     margin 0.32s ease,
     border-color 0.25s ease;
   white-space: nowrap;
+}
+
+/* Desktop only: lock height & enable overflow:hidden for the
+   smooth collapse animation when switching to blog mode */
+@media (min-width: 881px) {
+  .dock-menu {
+    height: 38px;
+    overflow: hidden;
+  }
 }
 
 /* Fluid shrink when switching to Blog Mode */
@@ -2243,6 +2250,7 @@ textarea.form-control {
     width: 100%;
     justify-content: space-between;
     padding: 6px 10px;
+    min-height: 52px;
   }
 
   .dock-menu {
@@ -2250,6 +2258,11 @@ textarea.form-control {
     top: 72px;
     left: 16px;
     right: 16px;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+    white-space: normal;
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -2263,7 +2276,9 @@ textarea.form-control {
     transform: translateY(-20px) scale(0.95);
     opacity: 0;
     pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                pointer-events 0s;
     z-index: 1001;
   }
 
